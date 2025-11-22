@@ -1,0 +1,148 @@
+// SPDX-License-Identifier: MIT AND Palimpsest-0.8
+/**
+ * Golden Registry Auditor
+ * Runs diagnostic checks and determines repository quality level
+ */
+
+open GrimRepoTypes
+
+let auditRepository = (existingPaths: array<string>, existingFiles: array<string>): auditResult => {
+  let structure = Bootstrap.analyzeStructure(existingPaths)
+  let community = Community.analyzeCommunityStandards(existingFiles)
+
+  // Calculate overall score (60% community, 40% structure)
+  let overallScore = Float.toInt(
+    Float.fromInt(community.score) *. 0.6 +. Float.fromInt(structure.score) *. 0.4,
+  )
+
+  // Determine quality level
+  let meetsRSR = Community.checkRSRCompliance(community)
+
+  let level = if overallScore >= 95 && meetsRSR {
+    Rhodium
+  } else if overallScore >= 85 && meetsRSR {
+    Gold
+  } else if overallScore >= 75 && meetsRSR {
+    Silver
+  } else if overallScore >= 60 && meetsRSR {
+    Bronze
+  } else {
+    Raw
+  }
+
+  // Gather recommendations
+  let structureRecs = Bootstrap.getStructureRecommendations(structure)
+  let communityRecs = Community.getCommunityRecommendations(community)
+
+  let levelRecs = switch level {
+  | Rhodium => [
+      "🏆 Rhodium Level: Exceptional repository!",
+      "💎 Consider submitting to Rhodium Register",
+      "✨ Serve as example for other repositories",
+    ]
+  | Gold => [
+      "🥇 Gold Level: Excellent repository!",
+      "📈 Next step: Improve documentation depth",
+      "🎯 Consider adding examples and guides",
+    ]
+  | Silver => [
+      "🥈 Silver Level: Strong repository!",
+      "📚 Next step: Enhance test coverage",
+      "🔍 Consider adding more automation",
+    ]
+  | Bronze => [
+      "🥉 Bronze Level: Good foundation!",
+      "📋 Next step: Complete recommended files",
+      "🛠️  Consider adding build automation",
+    ]
+  | Raw => [
+      "📦 Raw Project: Basic setup needed",
+      "🚀 Start with: LICENSE, README, CONTRIBUTING",
+      "💡 Use GrimRepo tools to scaffold structure",
+    ]
+  }
+
+  let recommendations =
+    structureRecs->Belt.Array.concat(communityRecs)->Belt.Array.concat(levelRecs)
+
+  {
+    structure: structure,
+    community: community,
+    overallScore: overallScore,
+    level: level,
+    recommendations: recommendations,
+  }
+}
+
+let generateAuditReport = (audit: auditResult): string => {
+  let lines = []
+
+  let lines = lines->Belt.Array.concat(["# GrimRepo Audit Report\n"])
+  let lines = lines->Belt.Array.concat([
+    `**Overall Score**: ${Belt.Int.toString(audit.overallScore)}/100`,
+  ])
+  let lines = lines->Belt.Array.concat([
+    `**Quality Level**: ${levelToString(audit.level)->Js.String2.toUpperCase}\n`,
+  ])
+
+  let lines = lines->Belt.Array.concat(["## Structure Analysis\n"])
+  let lines = lines->Belt.Array.concat([
+    `**Score**: ${Belt.Int.toString(audit.structure.score)}/100`,
+  ])
+  let lines = lines->Belt.Array.concat([
+    `**Present Directories**: ${Belt.Int.toString(Belt.Array.length(audit.structure.presentDirs))}`,
+  ])
+  let lines = lines->Belt.Array.concat([
+    `**Missing Directories**: ${Belt.Int.toString(Belt.Array.length(audit.structure.missingDirs))}\n`,
+  ])
+
+  let lines = if Belt.Array.length(audit.structure.missingDirs) > 0 {
+    let lines = lines->Belt.Array.concat(["### Missing Directories\n"])
+    audit.structure.missingDirs->Belt.Array.reduce(lines, (acc, dir) =>
+      acc->Belt.Array.concat([
+        `- **${dir.path}**: ${dir.purpose} (${switch dir.priority {
+          | Required => "required"
+          | Recommended => "recommended"
+          | Optional => "optional"
+          }})`,
+      ])
+    )->Belt.Array.concat([""])
+  } else {
+    lines
+  }
+
+  let lines = lines->Belt.Array.concat(["## Community Standards Analysis\n"])
+  let lines = lines->Belt.Array.concat([
+    `**Score**: ${Belt.Int.toString(audit.community.score)}/100`,
+  ])
+  let lines = lines->Belt.Array.concat([
+    `**Present Files**: ${Belt.Int.toString(Belt.Array.length(audit.community.presentFiles))}`,
+  ])
+  let lines = lines->Belt.Array.concat([
+    `**Missing Files**: ${Belt.Int.toString(Belt.Array.length(audit.community.missingFiles))}\n`,
+  ])
+
+  let lines = if Belt.Array.length(audit.community.missingFiles) > 0 {
+    let lines = lines->Belt.Array.concat(["### Missing Files\n"])
+    audit.community.missingFiles->Belt.Array.reduce(lines, (acc, file) =>
+      acc->Belt.Array.concat([
+        `- **${file.path}**: ${file.purpose} (${switch file.priority {
+          | Required => "required"
+          | Recommended => "recommended"
+          | Optional => "optional"
+          }})`,
+      ])
+    )->Belt.Array.concat([""])
+  } else {
+    lines
+  }
+
+  let lines = lines->Belt.Array.concat(["## Recommendations\n"])
+  let lines = audit.recommendations->Belt.Array.reduce(lines, (acc, rec) =>
+    acc->Belt.Array.concat([`- ${rec}`])
+  )
+
+  let lines = lines->Belt.Array.concat(["\n---\n", "Generated by GrimRepo Scripts"])
+
+  lines->Js.Array2.joinWith("\n")
+}

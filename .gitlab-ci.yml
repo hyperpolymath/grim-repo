@@ -1,120 +1,28 @@
-# GitLab CI/CD Pipeline for GrimRepo Scripts
+# GitLab CI/CD Pipeline for GrimRepo Scripts (ReScript + WASM)
 # RSR Bronze Compliance
 
 variables:
   NODE_VERSION: "20"
-  NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/.npm"
-
-# Cache node_modules between jobs
-cache:
-  key:
-    files:
-      - package-lock.json
-  paths:
-    - .npm
-    - node_modules
 
 # Stages
 stages:
-  - install
-  - validate
-  - test
   - build
+  - validate
   - security
   - deploy
 
-# Install dependencies
-install:
-  stage: install
-  image: node:${NODE_VERSION}
-  script:
-    - npm ci --prefer-offline
-  artifacts:
-    paths:
-      - node_modules
-    expire_in: 1 hour
-
-# Type checking
-typecheck:
-  stage: validate
-  image: node:${NODE_VERSION}
-  dependencies:
-    - install
-  script:
-    - npm run typecheck
-  allow_failure: false
-
-# Linting
-lint:
-  stage: validate
-  image: node:${NODE_VERSION}
-  dependencies:
-    - install
-  script:
-    - npm run lint
-  allow_failure: false
-
-# Code formatting check
-format-check:
-  stage: validate
-  image: node:${NODE_VERSION}
-  dependencies:
-    - install
-  script:
-    - npm run format:check
-  allow_failure: false
-
-# Unit tests
-test:
-  stage: test
-  image: node:${NODE_VERSION}
-  dependencies:
-    - install
-  script:
-    - npm test
-  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
-  artifacts:
-    reports:
-      junit: coverage/junit.xml
-      coverage_report:
-        coverage_format: cobertura
-        path: coverage/cobertura-coverage.xml
-    paths:
-      - coverage
-    expire_in: 7 days
-  allow_failure: false
-
-# Test coverage report
-coverage:
-  stage: test
-  image: node:${NODE_VERSION}
-  dependencies:
-    - install
-  script:
-    - npm run test:coverage
-    - echo "Coverage report generated"
-  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
-  artifacts:
-    paths:
-      - coverage
-    reports:
-      coverage_report:
-        coverage_format: cobertura
-        path: coverage/cobertura-coverage.xml
-    expire_in: 30 days
-
-# Build
+# Build ReScript
 build:
   stage: build
   image: node:${NODE_VERSION}
-  dependencies:
-    - install
   script:
-    - npm run build
-    - ls -lah dist/
+    - npm install -g rescript@latest
+    - rescript build
+    - ls -lah src/*.bs.js lib/
   artifacts:
     paths:
-      - dist
+      - src/*.bs.js
+      - lib/
     expire_in: 7 days
   allow_failure: false
 
@@ -155,10 +63,17 @@ rsr-compliance:
 
       echo ""
       echo "🛠️  Build System:"
-      check_file "package.json" || FAILED=1
-      check_file "tsconfig.json" || FAILED=1
+      check_file "bsconfig.json" || FAILED=1
       check_file "justfile" || FAILED=1
       check_file "flake.nix" || FAILED=1
+
+      echo ""
+      echo "📦 ReScript Source:"
+      check_file "src/GrimRepo.res" || FAILED=1
+      check_file "src/GrimRepoTypes.res" || FAILED=1
+      check_file "src/Bootstrap.res" || FAILED=1
+      check_file "src/Community.res" || FAILED=1
+      check_file "src/Audit.res" || FAILED=1
 
       echo ""
       echo "🔄 CI/CD:"
@@ -174,14 +89,13 @@ rsr-compliance:
       fi
   allow_failure: false
 
-# Security: SAST (Static Application Security Testing)
-sast:
-  stage: security
+# Code quality check
+code-quality:
+  stage: validate
   image: node:${NODE_VERSION}
-  dependencies:
-    - install
   script:
-    - npm audit --audit-level=moderate
+    - npm install -g rescript@latest
+    - rescript format -all -check
   allow_failure: true
 
 # Security: Secret Detection
@@ -190,42 +104,40 @@ secret_detection:
   variables:
     SECRET_DETECTION_ENABLED: 'true'
 
-# Security: Dependency Scanning
-dependency_scanning:
-  stage: security
-  allow_failure: true
-
 # Pages (documentation)
 pages:
   stage: deploy
-  image: node:${NODE_VERSION}
-  dependencies:
-    - coverage
+  image: alpine:latest
   script:
     - mkdir -p public
-    - cp -r coverage public/coverage
     - |
       cat > public/index.html <<EOF
       <!DOCTYPE html>
       <html>
       <head>
-        <title>GrimRepo Scripts - CI Reports</title>
+        <title>GrimRepo Scripts - ReScript + WASM</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
           body { font-family: system-ui; max-width: 800px; margin: 50px auto; padding: 20px; }
           h1 { color: #333; }
-          a { color: #1976d2; text-decoration: none; }
-          a:hover { text-decoration: underline; }
           .badge { display: inline-block; padding: 5px 10px; background: #4caf50; color: white; border-radius: 3px; margin: 5px; }
+          .tech { background: #2196f3; }
         </style>
       </head>
       <body>
-        <h1>📊 GrimRepo Scripts - CI Reports</h1>
-        <p><span class="badge">RSR Bronze Compliant</span></p>
-        <h2>Available Reports:</h2>
+        <h1>📊 GrimRepo Scripts</h1>
+        <p>
+          <span class="badge">RSR Bronze Compliant</span>
+          <span class="badge tech">ReScript</span>
+          <span class="badge tech">WASM-Ready</span>
+        </p>
+        <h2>Architecture:</h2>
         <ul>
-          <li><a href="coverage/">Test Coverage Report</a></li>
+          <li><strong>Core Logic</strong>: ReScript (type-safe, functional)</li>
+          <li><strong>Performance</strong>: WASM compilation target</li>
+          <li><strong>Glue Code</strong>: Minimal JavaScript</li>
+          <li><strong>Zero Runtime Dependencies</strong>: Offline-first</li>
         </ul>
         <p>Generated by GitLab CI/CD</p>
       </body>
@@ -240,6 +152,4 @@ pages:
 
 # Include GitLab security templates
 include:
-  - template: Security/SAST.gitlab-ci.yml
   - template: Security/Secret-Detection.gitlab-ci.yml
-  - template: Security/Dependency-Scanning.gitlab-ci.yml

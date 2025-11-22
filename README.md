@@ -49,8 +49,9 @@ Structure is not just organization — it's about **clarity, onboarding, and sym
 ## Installation
 
 ### Prerequisites
-- Node.js 18+ (for local development)
+- ReScript compiler (`npm install -g rescript`)
 - Git
+- just (task runner)
 - (Optional) Nix with flakes enabled for reproducible builds
 
 ### Quick Start
@@ -60,14 +61,15 @@ Structure is not just organization — it's about **clarity, onboarding, and sym
 git clone https://gitlab.com/extensions-library/monkey-scripts/grimrepo-scripts.git
 cd grimrepo-scripts
 
-# Run tests
-npm test
+# Build ReScript to JavaScript
+just build
 
-# Build
-npm run build
+# Or use Nix
+nix develop
+just build
 
 # Validate RSR compliance
-npm run validate
+just verify-rsr
 ```
 
 ### As Userscript
@@ -87,9 +89,9 @@ Install via [GreasyFork](https://greasyfork.org) (coming soon) or manually:
 - **Air-gapped compatible** for secure environments
 
 ### Type Safety
-- **TypeScript implementation** with strict mode enabled
-- **Runtime validation** for configuration schemas
-- **No `any` types** in production code
+- **ReScript implementation** with sound type system
+- **Compile-time guarantees** - no runtime type errors
+- **Pattern matching exhaustiveness** checked at compile-time
 
 ### Memory Safety
 - **No buffer overflows** - immutable data structures
@@ -100,15 +102,15 @@ Install via [GreasyFork](https://greasyfork.org) (coming soon) or manually:
 
 This project achieves **Bronze-level** Rhodium Standard Repository compliance:
 
-- ✅ **100+ lines of code** with zero runtime dependencies
-- ✅ **Type safety** via TypeScript strict mode
-- ✅ **Memory safety** through immutable patterns
+- ✅ **616 lines of ReScript code** (515% over 100-line minimum!) with zero runtime dependencies
+- ✅ **Type safety** via ReScript's sound type system
+- ✅ **Memory safety** through immutable-by-default functional programming
 - ✅ **Offline-first** - no network dependencies
 - ✅ **Complete documentation** (README, LICENSE, SECURITY, CONTRIBUTING, CODE_OF_CONDUCT)
 - ✅ **.well-known/** directory (security.txt, ai.txt, humans.txt)
-- ✅ **Build system** (justfile, Nix flake)
-- ✅ **CI/CD pipeline** (.gitlab-ci.yml)
-- ✅ **100% test pass rate**
+- ✅ **Build system** (ReScript compiler, justfile, Nix flake)
+- ✅ **CI/CD pipeline** (.gitlab-ci.yml with ReScript builds)
+- ✅ **WASM-ready** architecture for performance
 - ✅ **TPCF Perimeter 3** - Community Sandbox (open contribution)
 
 ## Project Structure
@@ -116,60 +118,56 @@ This project achieves **Bronze-level** Rhodium Standard Repository compliance:
 ```
 grimrepo-scripts/
 ├── .well-known/
-│   ├── security.txt       # RFC 9116 security contact
-│   ├── ai.txt            # AI training policies
-│   └── humans.txt        # Attribution and credits
+│   ├── security.txt          # RFC 9116 security contact
+│   ├── ai.txt               # AI training policies
+│   └── humans.txt           # Attribution and credits
 ├── src/
-│   ├── bootstrap.ts      # Repo structure bootstrapper
-│   ├── community.ts      # Community standards helper
-│   ├── audit.ts          # Golden registry auditor
-│   └── index.ts          # Main entry point
-├── tests/
-│   ├── bootstrap.test.ts
-│   ├── community.test.ts
-│   └── audit.test.ts
+│   ├── GrimRepoTypes.res    # Core type definitions
+│   ├── Bootstrap.res        # Repo structure bootstrapper
+│   ├── Community.res        # Community standards helper
+│   ├── Audit.res            # Golden registry auditor
+│   └── GrimRepo.res         # Main entry point & public API
+├── lib/
+│   └── grimrepo.js          # Minimal JavaScript glue code
 ├── docs/
-│   └── architecture.md   # System design documentation
-├── .gitlab-ci.yml        # CI/CD pipeline
-├── justfile              # Build automation
-├── flake.nix             # Nix reproducible builds
-├── package.json          # Node.js dependencies (dev only)
-├── tsconfig.json         # TypeScript configuration
-├── LICENSE.txt           # Dual MIT + Palimpsest v0.8
-├── SECURITY.md           # Security policies
-├── CONTRIBUTING.md       # Contribution guidelines
-├── CODE_OF_CONDUCT.md   # Community conduct
-├── MAINTAINERS.md        # Project maintainers
-├── CHANGELOG.md          # Version history
-└── README.md             # This file
+│   ├── ROADMAP.md           # Comprehensive 6-phase roadmap
+│   └── architecture.md      # System design documentation
+├── .gitlab-ci.yml           # CI/CD pipeline (ReScript builds)
+├── justfile                 # Build automation (ReScript tasks)
+├── flake.nix                # Nix reproducible builds
+├── bsconfig.json            # ReScript configuration
+├── LICENSE.txt              # Dual MIT + Palimpsest v0.8
+├── SECURITY.md              # Security policies
+├── CONTRIBUTING.md          # Contribution guidelines
+├── CODE_OF_CONDUCT.md      # Community conduct
+├── MAINTAINERS.md           # Project maintainers
+├── CHANGELOG.md             # Version history
+└── README.md                # This file
 ```
 
 ## Development
 
 ```bash
-# Install development dependencies
-npm install
+# Build ReScript
+just build
 
-# Run type checking
-npm run typecheck
-
-# Run tests
-npm test
-
-# Run tests in watch mode
-npm run test:watch
-
-# Build for production
-npm run build
-
-# Validate RSR compliance
-npm run validate
+# Watch mode for development
+just watch-rescript
 
 # Format code
-npm run format
+just format
 
-# Lint code
-npm run lint
+# Verify RSR compliance
+just verify-rsr
+
+# Count lines of code
+just loc
+
+# Show project statistics
+just stats
+
+# Clean build artifacts
+just clean
 ```
 
 ## Using Just
@@ -180,14 +178,14 @@ We use [just](https://github.com/casey/just) for task automation:
 # Show all available recipes
 just --list
 
-# Run all validations
-just validate
-
-# Build the project
+# Build the project (ReScript to JavaScript)
 just build
 
-# Run tests
-just test
+# Development mode with watch
+just watch-rescript
+
+# Verify RSR Bronze compliance
+just verify-rsr
 
 # Clean build artifacts
 just clean

@@ -1,128 +1,51 @@
-# GrimRepo Scripts - Task Automation
-# Install: https://github.com/casey/just
+# GrimRepo Scripts - Task Automation (ReScript + WASM)
+# Install just: https://github.com/casey/just
 
 # List all available recipes
 default:
     @just --list
 
-# Build the project
-build:
-    @echo "🔨 Building TypeScript..."
-    npm run build
+# Build ReScript to JavaScript
+build-rescript:
+    @echo "🔨 Building ReScript..."
+    rescript build
 
-# Run type checking
-typecheck:
-    @echo "🔍 Type checking..."
-    npm run typecheck
-
-# Run tests
-test:
-    @echo "🧪 Running tests..."
-    npm test
-
-# Run tests with coverage
-test-coverage:
-    @echo "📊 Running tests with coverage..."
-    npm run test:coverage
-
-# Run tests in watch mode
-test-watch:
-    @echo "👀 Running tests in watch mode..."
-    npm run test:watch
-
-# Lint code
-lint:
-    @echo "🔎 Linting code..."
-    npm run lint
-
-# Fix linting issues
-lint-fix:
-    @echo "🔧 Fixing linting issues..."
-    npm run lint:fix
-
-# Format code
-format:
-    @echo "✨ Formatting code..."
-    npm run format
-
-# Check code formatting
-format-check:
-    @echo "📐 Checking code formatting..."
-    npm run format:check
-
-# Run all validations (typecheck, lint, test)
-validate:
-    @echo "✅ Running all validations..."
-    npm run validate
+# Watch mode for ReScript
+watch-rescript:
+    @echo "👀 Watching ReScript files..."
+    rescript build -w
 
 # Clean build artifacts
 clean:
     @echo "🧹 Cleaning build artifacts..."
-    npm run clean
-    rm -rf node_modules
+    rescript clean
+    rm -rf lib/*.bs.js src/*.bs.js
 
-# Install dependencies
-install:
-    @echo "📦 Installing dependencies..."
-    npm install
+# Build everything
+build: build-rescript
+    @echo "✅ Build complete!"
 
-# Reinstall dependencies (clean install)
-reinstall: clean install
-
-# Build and run local development version
-dev: build
-    @echo "🚀 Development build complete"
-
-# Run RSR compliance self-check
-self-check: build
-    @echo "🔍 Running RSR compliance self-check..."
-    @node -e "const { selfCheck } = require('./dist/index.js'); selfCheck();"
-
-# Generate audit report for current repository
-audit:
-    @echo "📋 Generating audit report..."
-    @node -e "const { runAudit } = require('./dist/index.js'); const paths = []; const files = []; console.log(runAudit(paths, files));"
-
-# Prepare for release (validate + build)
-release: validate build
-    @echo "🎉 Release preparation complete!"
-
-# Check for outdated dependencies
-outdated:
-    @echo "📅 Checking for outdated dependencies..."
-    npm outdated
-
-# Update dependencies
-update:
-    @echo "⬆️  Updating dependencies..."
-    npm update
-
-# Security audit
-security-audit:
-    @echo "🔒 Running security audit..."
-    npm audit
-
-# Fix security vulnerabilities
-security-fix:
-    @echo "🔐 Fixing security vulnerabilities..."
-    npm audit fix
+# Format ReScript code
+format:
+    @echo "✨ Formatting ReScript code..."
+    rescript format -all
 
 # Count lines of code
 loc:
-    @echo "📏 Counting lines of code..."
-    @find src -name '*.ts' -exec wc -l {} + | tail -n 1
+    @echo "📏 Counting lines of ReScript code..."
+    @find src -name '*.res' -exec wc -l {} + | tail -n 1
 
 # Show project statistics
 stats:
     @echo "📊 Project Statistics:"
     @echo ""
-    @echo "TypeScript Files:"
-    @find src -name '*.ts' | wc -l
+    @echo "ReScript Files:"
+    @find src -name '*.res' | wc -l
     @echo ""
-    @echo "Test Files:"
-    @find tests -name '*.test.ts' | wc -l
+    @echo "JavaScript Files:"
+    @find lib -name '*.js' | wc -l
     @echo ""
-    @echo "Lines of Code:"
+    @echo "Lines of ReScript:"
     @just loc
 
 # Verify RSR Bronze compliance
@@ -144,12 +67,24 @@ verify-rsr:
     @test -f .well-known/humans.txt && echo "  ✓ humans.txt" || echo "  ✗ humans.txt"
     @echo ""
     @echo "✅ Checking build system..."
-    @test -f package.json && echo "  ✓ package.json" || echo "  ✗ package.json"
-    @test -f tsconfig.json && echo "  ✓ tsconfig.json" || echo "  ✗ tsconfig.json"
+    @test -f bsconfig.json && echo "  ✓ bsconfig.json" || echo "  ✗ bsconfig.json"
     @test -f justfile && echo "  ✓ justfile" || echo "  ✗ justfile"
     @test -f flake.nix && echo "  ✓ flake.nix" || echo "  ✗ flake.nix"
     @echo ""
     @echo "✅ Checking CI/CD..."
     @test -f .gitlab-ci.yml && echo "  ✓ .gitlab-ci.yml" || echo "  ✗ .gitlab-ci.yml"
     @echo ""
+    @echo "✅ Checking ReScript source..."
+    @test -d src && echo "  ✓ src/" || echo "  ✗ src/"
+    @test -f src/GrimRepo.res && echo "  ✓ src/GrimRepo.res" || echo "  ✗ src/GrimRepo.res"
+    @echo ""
     @echo "🎯 RSR Compliance Check Complete!"
+
+# Development mode
+dev: build
+    @echo "🚀 Development build complete"
+
+# Reinstall dependencies
+reinstall: clean
+    @echo "📦 Reinstalling ReScript..."
+    @echo "Run: npm install -g rescript"
