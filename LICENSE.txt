@@ -1,13 +1,19 @@
-DUAL LICENSE: MIT + Palimpsest v0.8
+SPDX-License-Identifier: MIT OR AGPL-3.0-or-later
+SPDX-FileCopyrightText: 2024-2025 hyperpolymath
 
-This software is dual-licensed under the MIT License and the Palimpsest License v0.8.
-You may use, copy, modify, and distribute this software under the terms of EITHER license.
+================================================================================
+DUAL LICENSE: MIT OR AGPL-3.0-or-later
+================================================================================
 
-===============================================================================
+This project is dual-licensed under the MIT License OR the GNU Affero General
+Public License v3.0 or later. You may choose to use, copy, modify, and
+distribute this work under the terms of EITHER license (your choice).
+
+--------------------------------------------------------------------------------
 MIT LICENSE
-===============================================================================
+--------------------------------------------------------------------------------
 
-Copyright (c) 2025 GrimRepo Contributors
+Copyright (c) 2024-2025 hyperpolymath
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,128 +33,59 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-===============================================================================
-PALIMPSEST LICENSE v0.8
-===============================================================================
+--------------------------------------------------------------------------------
+GNU AFFERO GENERAL PUBLIC LICENSE v3.0 OR LATER
+--------------------------------------------------------------------------------
 
-The Palimpsest License
-Version 0.8, January 2025
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
 
-Copyright (c) 2025 GrimRepo Contributors
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+details.
 
-PREAMBLE
+You should have received a copy of the GNU Affero General Public License along
+with this program. If not, see <https://www.gnu.org/licenses/>.
 
-The Palimpsest License recognizes that software development involves not just
-code, but human relationships, emotional labor, and community safety. This
-license extends traditional open source permissions with explicit guarantees
-around emotional safety, reversibility, and community health.
+The full text of the AGPL-3.0 is available at:
+  https://www.gnu.org/licenses/agpl-3.0.txt
 
-TERMS AND CONDITIONS
+--------------------------------------------------------------------------------
+CHOOSING YOUR LICENSE
+--------------------------------------------------------------------------------
 
-1. GRANT OF RIGHTS
+You may choose to use this work under:
+  1. MIT License - Standard permissive open source license
+  2. AGPL-3.0-or-later - Copyleft license requiring source disclosure for
+     network services
 
-   Permission is hereby granted, free of charge, to any person obtaining a
-   copy of this software and associated documentation (the "Work"), to use,
-   copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-   of the Work, subject to the following conditions:
+For most uses, MIT License provides maximum flexibility.
+For ensuring open source remains open (especially for SaaS/network services),
+AGPL-3.0-or-later provides stronger protections.
 
-2. ATTRIBUTION
+================================================================================
+PALIMPSEST PHILOSOPHICAL OVERLAY (NON-BINDING)
+================================================================================
 
-   The above copyright notice and this permission notice shall be included in
-   all copies or substantial portions of the Work.
+This project encourages (but does not legally require) adherence to the
+principles of the Palimpsest License - a framework for consent-based digital
+interaction and the future web.
 
-3. EMOTIONAL SAFETY GUARANTEES
+Core Principles (Encouraged):
+  - Respect for emotional and creative lineage
+  - Transparent AI training practices with explicit consent
+  - Preservation of metadata and attribution
+  - Protection of narrative intent and cultural context
 
-   3.1 RIGHT TO REVERSIBILITY
-       All contributors retain the right to experiment without permanent
-       consequences. Failed experiments, abandoned features, and reverted
-       changes shall not be held against contributors in any way.
+The Palimpsest principles represent our vision for a consent-based internet.
+While not legally binding for use of this software, we encourage all users
+and contributors to familiarize themselves with these principles.
 
-   3.2 ANTI-HARASSMENT PROTECTION
-       No person shall use this Work as a vector for harassment, doxxing,
-       emotional manipulation, or coordinated attacks against contributors
-       or users.
+Learn more: https://github.com/hyperpolymath/palimpsest-license
 
-   3.3 ANXIETY REDUCTION
-       Documentation and contribution processes shall prioritize clarity and
-       psychological safety. Confusing or anxiety-inducing patterns should
-       be treated as bugs.
-
-4. COMMUNITY HEALTH
-
-   4.1 CONSTRUCTIVE CRITIQUE
-       Code review and technical critique must focus on the work, not the
-       person. Personal attacks, dismissiveness, and condescension are
-       prohibited.
-
-   4.2 INCLUSIVE PARTICIPATION
-       The Work shall remain accessible to people of varying skill levels,
-       backgrounds, and neurotypes. Gatekeeping is prohibited.
-
-   4.3 SUSTAINABLE MAINTENANCE
-       Maintainers have the right to sustainable work practices, including
-       the right to step back, delegate, or hand off maintenance without
-       guilt or pressure.
-
-5. TRANSPARENT GOVERNANCE
-
-   5.1 DECISION VISIBILITY
-       Significant project decisions should be documented and visible.
-       Backroom deals and clique-based governance are discouraged.
-
-   5.2 CONTRIBUTOR VOICE
-       Regular contributors should have meaningful input into project
-       direction, proportional to their sustained engagement.
-
-6. NO WARRANTY
-
-   THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-
-7. LIMITATION OF LIABILITY
-
-   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE WORK
-   OR THE USE OR OTHER DEALINGS IN THE WORK.
-
-8. ENFORCEMENT
-
-   Violations of the emotional safety and community health provisions may
-   result in:
-   - Temporary or permanent ban from project spaces
-   - Revocation of commit access
-   - Public documentation of violations (with consent of affected parties)
-
-   Enforcement decisions should be made transparently by maintainers in
-   consultation with affected community members.
-
-9. COMPATIBILITY
-
-   This license is compatible with the MIT License, Apache 2.0, and other
-   permissive open source licenses. The additional provisions apply only
-   to community interaction, not to code usage rights.
-
-10. TERMINATION
-
-    This license is perpetual unless explicitly terminated by copyright
-    holders. Individual violators of community health provisions may have
-    their participation rights terminated while the license remains in
-    effect for other users.
-
-END OF TERMS AND CONDITIONS
-
-===============================================================================
-
-HOW TO APPLY THESE LICENSES TO YOUR WORK
-
-Include this LICENSE.txt file in your distribution and add the following
-notice to your source files:
-
-    SPDX-License-Identifier: MIT AND Palimpsest-0.8
-
-    This file is dual-licensed under the MIT License and Palimpsest License v0.8.
-    See LICENSE.txt for complete terms.
-
-===============================================================================
+================================================================================
+END OF LICENSE
+================================================================================
