@@ -1,54 +1,79 @@
-# ReScript build outputs
-*.bs.js
-*.bs.mjs
-lib/bs
-.bsb.lock
-.merlin
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# RSR-compliant .gitignore
 
-# OCaml/Dune
-_build/
-*.install
-*.opam
-
-# Node (only if needed for ReScript tooling)
-node_modules/
-package-lock.json
-
-# Editor directories and files
-.idea/
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
+# OS & Editor
+.DS_Store
+Thumbs.db
 *.swp
 *.swo
 *~
-.DS_Store
-Thumbs.db
+.idea/
+.vscode/
 
-# OS files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Desktop.ini
+# Build
+/target/
+/_build/
+/build/
+/dist/
+/out/
 
-# Temporary files
-*.tmp
-*.temp
-*.log
-*.cache
+# Dependencies
+/node_modules/
+/vendor/
+/deps/
+/.elixir_ls/
 
-# Nix
-result
-result-*
-.direnv/
+# Rust
+# Cargo.lock  # Keep for binaries
 
-# Secrets (should never be committed)
-*.key
+# Elixir
+/cover/
+/doc/
+*.ez
+erl_crash.dump
+
+# Julia
+*.jl.cov
+*.jl.mem
+/Manifest.toml
+
+# ReScript
+/lib/bs/
+/.bsb.lock
+
+# Python (SaltStack only)
+__pycache__/
+*.py[cod]
+.venv/
+
+# Ada/SPARK
+*.ali
+/obj/
+/bin/
+
+# Haskell
+/.stack-work/
+/dist-newstyle/
+
+# Chapel
+*.chpl.tmp.*
+
+# Secrets
+.env
+.env.*
 *.pem
-*.cert
+*.key
 secrets/
-credentials.json
-.secrets
+
+# Test/Coverage
+/coverage/
+htmlcov/
+
+# Logs
+*.log
+/logs/
+
+# Temp
+/tmp/
+*.tmp
+*.bak
