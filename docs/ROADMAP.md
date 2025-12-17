@@ -527,6 +527,10 @@ GrimRepo provides modular, audit-grade tooling that elevates repositories from "
 
 ### 2025 Q1
 - ✅ RSR Bronze compliance achieved (v1.0.0)
+- ✅ All GitHub workflows secured (SHA-pinned actions, permissions, SPDX headers)
+- ✅ Security scanning enabled (CodeQL, OSSF Scorecard, SLSA3 provenance)
+- ✅ Well-known standards compliance (RFC 9116 security.txt, ai.txt, humans.txt)
+- ✅ Dependabot configured (github-actions, nix, npm ecosystems)
 - [ ] Userscript published to GreasyFork
 - [ ] Website (grimrepo.dev) launched
 
@@ -607,8 +611,8 @@ Join us in building the future of repository quality.
 ---
 
 **Maintained by**: GrimRepo Contributors
-**Last Updated**: 2025-01-22
-**Version**: 1.0
+**Last Updated**: 2025-12-17
+**Version**: 1.1
 **License**: MIT + Palimpsest v0.8
 
 **Let's make every repository a rhodium-standard exemplar!** 🏆
