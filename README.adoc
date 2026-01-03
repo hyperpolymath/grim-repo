@@ -1,9 +1,12 @@
 = GrimRepo Scripts
 
+image:https://img.shields.io/badge/License-MPL_2.0-blue.svg[MPL-2.0,link="https://opensource.org/licenses/MPL-2.0"]
+image:https://img.shields.io/badge/Philosophy-Palimpsest-purple.svg[Palimpsest,link="https://github.com/hyperpolymath/palimpsest-licence"]
+
+
 *Modular audit-grade tooling for narratable, scaffolded, and legible repositories*
 
 [![RSR Compliant](https://img.shields.io/badge/RSR-Bronze-cd7f32)](https://rhodium-standard.org)
-[![License](https://img.shields.io/badge/license-MIT%20%2B%20Palimpsest%20v0.8-blue.svg)](LICENSE.txt)
 [![TPCF](https://img.shields.io/badge/TPCF-Perimeter%203-green)](CONTRIBUTING.md)
 
 == Overview
