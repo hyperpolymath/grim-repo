@@ -262,3 +262,8 @@ See [.well-known/humans.txt](.well-known/humans.txt) for complete attribution.
 ---
 
 *Built with rhodium-standard clarity. Emotionally legible by design.*
+
+
+== Architecture
+
+See link:TOPOLOGY.md[TOPOLOGY.md] for a visual architecture map and completion dashboard.
