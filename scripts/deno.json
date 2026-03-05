@@ -11,7 +11,7 @@
     "check": "deno run -A npm:rescript"
   },
   "imports": {
-    "rescript": "npm:rescript@11"
+    "rescript": "^12.0.0"
   },
   "compilerOptions": {
     "allowJs": true
