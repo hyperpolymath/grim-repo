@@ -1,18 +1,47 @@
 // SPDX-License-Identifier: PMPL-1.0-or-later
 // Build script to generate .user.js files from compiled .mjs files
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
-import { join } from "node:path";
-
-const distDir = "./dist";
-if (!existsSync(distDir)) {
-  mkdirSync(distDir, { recursive: true });
+module Fs = {
+  @module("node:fs") @val external readFileSync: (string, string) => string = "readFileSync"
+  @module("node:fs") @val external writeFileSync: (string, string, string) => unit = "writeFileSync"
+  @module("node:fs") @val external mkdirSync: (string, { "recursive": bool }) => unit = "mkdirSync"
+  @module("node:fs") @val external existsSync: string => bool = "existsSync"
 }
 
-const scripts = [
+module Path = {
+  @module("node:path") @val external join: (string, string) => string = "join"
+}
+
+let distDir = "./dist"
+
+if !Fs.existsSync(distDir) {
+  Fs.mkdirSync(distDir, { "recursive": true })
+}
+
+type metadata = {
+  name: string,
+  version: string,
+  description: string,
+  author: string,
+  namespace: string,
+  homepage: string,
+  supportURL: string,
+  match: array<string>,
+  grant: array<string>,
+  license: string,
+  runAt: string,
+}
+
+type scriptDef = {
+  name: string,
+  entry: string,
+  metadata: metadata,
+}
+
+let scripts = [
   {
     name: "GrimGreaser",
-    entry: "./src/scripts/greaser/GrimGreaser.mjs",
+    entry: "./src/scripts/greaser/GrimGreaser.res.mjs",
     metadata: {
       name: "GrimGreaser",
       version: "1.0.0",
@@ -29,7 +58,7 @@ const scripts = [
   },
   {
     name: "GrimPager",
-    entry: "./src/scripts/pager/GrimPager.mjs",
+    entry: "./src/scripts/pager/GrimPager.res.mjs",
     metadata: {
       name: "GrimPager",
       version: "1.0.0",
@@ -46,7 +75,7 @@ const scripts = [
   },
   {
     name: "GrimTemplateEngine",
-    entry: "./src/scripts/template/GrimTemplateEngine.mjs",
+    entry: "./src/scripts/template/GrimTemplateEngine.res.mjs",
     metadata: {
       name: "GrimTemplateEngine",
       version: "1.0.0",
@@ -69,7 +98,7 @@ const scripts = [
   },
   {
     name: "GrimLicenseChecker",
-    entry: "./src/scripts/license/GrimLicenseChecker.mjs",
+    entry: "./src/scripts/license/GrimLicenseChecker.res.mjs",
     metadata: {
       name: "GrimLicenseChecker",
       version: "1.0.0",
@@ -86,7 +115,7 @@ const scripts = [
   },
   {
     name: "GrimCIValidator",
-    entry: "./src/scripts/ci/GrimCIValidator.mjs",
+    entry: "./src/scripts/ci/GrimCIValidator.res.mjs",
     metadata: {
       name: "GrimCIValidator",
       version: "1.0.0",
@@ -103,7 +132,7 @@ const scripts = [
   },
   {
     name: "GrimSecurityScanner",
-    entry: "./src/scripts/security/GrimSecurityScanner.mjs",
+    entry: "./src/scripts/security/GrimSecurityScanner.res.mjs",
     metadata: {
       name: "GrimSecurityScanner",
       version: "1.0.0",
@@ -118,10 +147,10 @@ const scripts = [
       runAt: "document-end",
     },
   },
-];
+]
 
-function generateMetadataBlock(metadata: any): string {
-  const lines = [
+let generateMetadataBlock = (metadata: metadata) => {
+  let lines = [
     "// ==UserScript==",
     `// @name         ${metadata.name}`,
     `// @namespace    ${metadata.namespace}`,
@@ -130,46 +159,44 @@ function generateMetadataBlock(metadata: any): string {
     `// @author       ${metadata.author}`,
     `// @homepage     ${metadata.homepage}`,
     `// @supportURL   ${metadata.supportURL}`,
-  ];
+  ]
 
-  // Add all match patterns
-  metadata.match.forEach((pattern: string) => {
-    lines.push(`// @match        ${pattern}`);
-  });
+  metadata.match->Js.Array2.forEach(pattern => {
+    let _ = Js.Array2.push(lines, `// @match        ${pattern}`)
+  })
 
-  // Add all grants
-  metadata.grant.forEach((grant: string) => {
-    lines.push(`// @grant        ${grant}`);
-  });
+  metadata.grant->Js.Array2.forEach(grant => {
+    let _ = Js.Array2.push(lines, `// @grant        ${grant}`)
+  })
 
-  lines.push(`// @license      ${metadata.license}`);
-  lines.push(`// @run-at       ${metadata.runAt}`);
-  lines.push("// ==/UserScript==");
-  lines.push("");
+  let _ = Js.Array2.push(lines, `// @license      ${metadata.license}`)
+  let _ = Js.Array2.push(lines, `// @run-at       ${metadata.runAt}`)
+  let _ = Js.Array2.push(lines, "// ==/UserScript==")
+  let _ = Js.Array2.push(lines, "")
 
-  return lines.join("\n");
+  Js.Array2.joinWith(lines, "\n")
 }
 
-console.log("Building userscripts...\n");
+Js.log("Building userscripts...\n")
 
-for (const script of scripts) {
+scripts->Js.Array2.forEach(script => {
   try {
-    const code = readFileSync(script.entry, "utf-8");
-    const header = generateMetadataBlock(script.metadata);
-    const output = header + "\n" + code;
+    let code = Fs.readFileSync(script.entry, "utf-8")
+    let header = generateMetadataBlock(script.metadata)
+    let output = header ++ "\n" ++ code
 
-    const outputPath = join(distDir, `${script.name}.user.js`);
-    writeFileSync(outputPath, output, "utf-8");
+    let outputPath = Path.join(distDir, `${script.name}.user.js`)
+    Fs.writeFileSync(outputPath, output, "utf-8")
 
-    console.log(`✓ Built ${script.name}.user.js`);
-  } catch (error) {
-    console.error(`✗ Failed to build ${script.name}:`, error);
+    Js.log(`✓ Built ${script.name}.user.js`)
+  } catch {
+  | exn => Js.Console.error2(`✗ Failed to build ${script.name}:`, exn)
   }
-}
+})
 
-console.log(`\nAll userscripts built in ${distDir}/`);
-console.log("\nTo publish to GreasyFork:");
-console.log("1. Visit https://greasyfork.org/en/scripts/new");
-console.log("2. Upload each .user.js file");
-console.log("3. Fill in description and set language to 'English'");
-console.log("4. Click 'Post script'");
+Js.log(`\nAll userscripts built in ${distDir}/`)
+Js.log("\nTo publish to GreasyFork:")
+Js.log("1. Visit https://greasyfork.org/en/scripts/new")
+Js.log("2. Upload each .user.js file")
+Js.log("3. Fill in description and set language to 'English'")
+Js.log("4. Click 'Post script'")
