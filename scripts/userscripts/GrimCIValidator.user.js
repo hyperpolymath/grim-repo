@@ -3,7 +3,7 @@
 // @namespace    https://github.com/hyperpolymath
 // @version      1.0.0
 // @description  GitHub Actions workflow quality checker
-// @author       Jonathan D.A. Jewell <jonathan.jewell@open.ac.uk>
+// @author       Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 // @homepage     https://github.com/hyperpolymath/grimrepo-scripts
 // @supportURL   https://github.com/hyperpolymath/grimrepo-scripts/issues
 // @match        *://github.com/*/.github/workflows/*

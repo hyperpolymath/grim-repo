@@ -6,29 +6,29 @@
 [source,bibtex]
 ----
 @software{grim-repo_2025,
-  author = {Polymath, Hyper},
+  author = {Jewell, Jonathan D.A.},
   title = {grim-repo},
   year = {2025},
   url = {https://github.com/hyperpolymath/grim-repo},
-  license = {AGPL-3.0-or-later}
+  license = {PMPL-1.0-or-later}
 }
 ----
 
 == Harvard Style
 
-Polymath, H. (2025) _grim-repo_ [Computer software]. Available at: https://github.com/hyperpolymath/grim-repo
+Jewell, J.D.A. (2025) _grim-repo_ [Computer software]. Available at: https://github.com/hyperpolymath/grim-repo
 
 == OSCOLA
 
-Hyper Polymath, 'grim-repo' (2025) <https://github.com/hyperpolymath/grim-repo>
+Jonathan D.A. Jewell, 'grim-repo' (2025) <https://github.com/hyperpolymath/grim-repo>
 
 == MLA
 
-Polymath, Hyper. "grim-repo." 2025, github.com/hyperpolymath/grim-repo.
+Jewell, Jonathan D.A.. "grim-repo." 2025, github.com/hyperpolymath/grim-repo.
 
 == APA 7
 
-Polymath, H. (2025). _grim-repo_ [Computer software]. GitHub. https://github.com/hyperpolymath/grim-repo
+Jewell, J.D.A. (2025). _grim-repo_ [Computer software]. GitHub. https://github.com/hyperpolymath/grim-repo
 
 == See Also
 

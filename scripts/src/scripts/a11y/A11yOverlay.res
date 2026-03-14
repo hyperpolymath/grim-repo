@@ -1,5 +1,5 @@
 // A11yOverlay.res - Accessibility Testing Overlay
-// SPDX-License-Identifier: AGPL-3.0-or-later OR LicenseRef-Palimpsest-0.5
+// SPDX-License-Identifier: PMPL-1.0-or-later OR LicenseRef-Palimpsest-0.5
 //
 // Quick accessibility audit overlay with WCAG 2.3 checks:
 // - Color contrast (AAA 7:1 ratio)

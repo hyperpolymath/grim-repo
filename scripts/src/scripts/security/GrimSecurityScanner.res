@@ -10,7 +10,7 @@
 // @name GrimSecurityScanner
 // @version 1.0.0
 // @namespace https://github.com/hyperpolymath
-// @author Jonathan D.A. Jewell <jonathan.jewell@open.ac.uk>
+// @author Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 // @description Security vulnerability detector for repositories
 // @homepage https://github.com/hyperpolymath/grimrepo-scripts
 // @supportURL https://github.com/hyperpolymath/grimrepo-scripts/issues

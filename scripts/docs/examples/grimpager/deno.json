@@ -2,7 +2,7 @@
   "name": "GrimPager",
   "version": "1.0.0",
   "description": "Perpetual pages - Powerful auto-pager script",
-  "author": "Jonathan D.A. Jewell <jonathan.jewell@open.ac.uk>",
+  "author": "Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>",
   "license": "PMPL-1.0-or-later",
   "tasks": {
     "build": "rescript build -with-deps && deno run --allow-read --allow-write --allow-env --allow-run --allow-net src/Build.bs.js",
