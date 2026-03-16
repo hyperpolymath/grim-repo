@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Clade declaration — part of the gv-clade-index registry
+# See: https://github.com/hyperpolymath/gv-clade-index
+
+[identity]
+uuid = "777666bc-1913-5507-89e9-b829cf4a7e99"
+primary-forge = "github"
+primary-owner = "hyperpolymath"
+canonical-name = "grim-repo"
+prefixed-name = "rm-grim-repo"
+
+[clade]
+primary = "rm"
+secondary = []
+assigned = "2026-03-16"
+rationale = ""
+
+[forges]
+github = "hyperpolymath/grim-repo"
+gitlab = "hyperpolymath/grim-repo"
+bitbucket = "hyperpolymath/grim-repo"
+
+[lineage]
+type = "standalone"
+parent = "Repo standards toolkit — GrimRepo Scripts (ReScript)"
+born = "2026-03-16"
