@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SPDX-License-Identifier: PMPL-1.0-or-later
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
@@ -19,3 +20,18 @@ report-format = "logtalk"
 # Neural pattern detection settings
 # confidence-threshold = 0.85
 # model = "hypatia-v2"
+=======
+;; SPDX-License-Identifier: PMPL-1.0-or-later
+;; NEUROSYM.scm - Neurosymbolic integration config for grimrepo-scripts
+
+(define neurosym-config
+  `((version . "1.0.0")
+    (symbolic-layer
+      ((type . "scheme")
+       (reasoning . "deductive")
+       (verification . "formal")))
+    (neural-layer
+      ((embeddings . false)
+       (fine-tuning . false)))
+    (integration . ())))
+>>>>>>> d09ab6f (chore: batch RSR compliance)
