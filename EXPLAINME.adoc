@@ -1,0 +1,35 @@
+// SPDX-License-Identifier: PMPL-1.0-or-later
+= GrimRepo Scripts — Show Me The Receipts
+:toc:
+:icons: font
+
+The README makes claims. This file backs them up.
+
+[quote, README]
+____
+GrimRepo is a modular toolkit for elevating repositories to professional standards across GitLab, GitHub, and Bitbucket. The project embodies the principle that *repositories should be narratable, audit-grade, and emotionally legible*.
+____
+
+== Technology Choices
+
+[cols="1,2"]
+|===
+| Technology | Learn More
+
+| **ReScript** | https://rescript-lang.org
+|===
+
+== File Map
+
+[cols="1,2"]
+|===
+| Path | What's There
+
+| `src/` | Source code
+| `lib/` | Library code
+| `test(s)/` | Test suite
+|===
+
+== Questions?
+
+Open an issue or reach out directly — happy to explain anything in more detail.
