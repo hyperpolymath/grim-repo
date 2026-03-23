@@ -10,6 +10,6 @@ async function main() {
 main();
 
 export {
-  main ,
+  main,
 }
 /*  Not a pure module */
