@@ -77,3 +77,8 @@ htmlcov/
 /tmp/
 *.tmp
 *.bak
+
+# ReScript/OCaml compiler artifacts
+*.cmt
+*.cmti
+*.cmi
