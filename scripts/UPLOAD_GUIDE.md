@@ -304,7 +304,7 @@ For each script:
 Commit the userscripts to GitHub to test the webhook:
 
 ```bash
-cd /mnt/eclipse/repos/grimrepo-scripts
+cd $REPOS_DIR/grimrepo-scripts
 git add userscripts/
 git commit -m "Add GreasyFork userscripts with webhook sync"
 git push origin main
