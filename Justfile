@@ -2,6 +2,8 @@
 # Install just: https://github.com/casey/just
 
 # List all available recipes
+import? "contractile.just"
+
 default:
     @just --list
 
