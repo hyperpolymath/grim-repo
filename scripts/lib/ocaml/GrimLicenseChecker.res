@@ -81,7 +81,7 @@ let licenseToString = (lic: license): string => {
   | MIT => "MIT"
   | Apache_2_0 => "Apache-2.0"
   | GPL_3_0 => "GPL-3.0"
-  | AGPL_3_0 => "AGPL-3.0"
+  | AGPL_3_0 => "PMPL-1.0-or-later"
   | BSD_3Clause => "BSD-3-Clause"
   | Unknown(s) => `Unknown (${s})`
   }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SPDX-License-Identifier: PMPL-1.0-or-later
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
@@ -18,3 +19,25 @@ category = ""
 projects = [
   # No related projects recorded
 ]
+=======
+;; SPDX-License-Identifier: PMPL-1.0-or-later
+;; ECOSYSTEM.scm - Ecosystem position for grimrepo-scripts
+;; Media-Type: application/vnd.ecosystem+scm
+
+(ecosystem
+  (version "1.0")
+  (name "grimrepo-scripts")
+  (type "")
+  (purpose "")
+
+  (position-in-ecosystem
+    (category "")
+    (subcategory "")
+    (unique-value ()))
+
+  (related-projects ())
+
+  (what-this-is ())
+
+  (what-this-is-not ()))
+>>>>>>> d09ab6f (chore: batch RSR compliance)

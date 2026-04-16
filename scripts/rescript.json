@@ -1,25 +1,17 @@
 {
   "name": "grimrepo-scripts",
   "sources": [
+    {"dir": ".", "subdirs": false},
     {"dir": "src/core", "subdirs": true},
     {"dir": "src/scripts", "subdirs": true}
   ],
   "package-specs": [{
-    "module": "es6",
+    "module": "esmodule",
     "in-source": true
   }],
-  "suffix": ".mjs",
-  "bs-dependencies": [],
+  "suffix": ".res.mjs",
+  "dependencies": [],
   "warnings": {
     "number": "-44-102"
-  },
-  "reason": {"react-jsx": 3},
-  "gentypeconfig": {
-    "language": "typescript",
-    "shims": {},
-    "debug": {
-      "all": false,
-      "basic": false
-    }
   }
 }
