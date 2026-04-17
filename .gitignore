@@ -82,3 +82,11 @@ htmlcov/
 *.cmt
 *.cmti
 *.cmi
+target/
+node_modules/
+_build/
+deps/
+.elixir_ls/
+.cache/
+build/
+dist/
