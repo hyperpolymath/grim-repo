@@ -239,7 +239,7 @@ grimrepo-scripts/
 │   ├── ai.txt
 │   └── humans.txt
 ├── bsconfig.json     # ReScript configuration
-├── justfile          # Task automation
+├── Justfile          # Task automation
 ├── flake.nix         # Nix build
 └── .gitlab-ci.yml    # CI/CD pipeline
 ```

@@ -43,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - humans.txt (attribution and credits)
 
 **Build System**:
-- justfile with 20+ automation recipes
+- Justfile with 20+ automation recipes
 - package.json with npm scripts
 - TypeScript configuration (strict mode)
 - ESLint and Prettier setup

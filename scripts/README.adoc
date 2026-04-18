@@ -156,7 +156,7 @@ grimrepo-scripts/
 ├── dist/                      # Built userscripts
 ├── deno.json                  # Deno configuration
 ├── rescript.json              # ReScript compiler config
-├── justfile                   # Task runner
+├── Justfile                   # Task runner
 └── STATE.scm                  # Project state
 ----
 

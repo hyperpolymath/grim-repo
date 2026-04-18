@@ -111,7 +111,7 @@ This project achieves *Bronze-level* Rhodium Standard Repository compliance:
 - ✅ *Offline-first* - no network dependencies
 - ✅ *Complete documentation* (README, LICENSE, SECURITY, CONTRIBUTING, CODE_OF_CONDUCT)
 - ✅ *.well-known/* directory (security.txt, ai.txt, humans.txt)
-- ✅ *Build system* (ReScript compiler, justfile, Nix flake)
+- ✅ *Build system* (ReScript compiler, Justfile, Nix flake)
 - ✅ *CI/CD pipeline* (.gitlab-ci.yml with ReScript builds)
 - ✅ *WASM-ready* architecture for performance
 - ✅ *TPCF Perimeter 3* - Community Sandbox (open contribution)
@@ -136,7 +136,7 @@ grimrepo-scripts/
 │   ├── ROADMAP.md           # Comprehensive 6-phase roadmap
 │   └── architecture.md      # System design documentation
 ├── .gitlab-ci.yml           # CI/CD pipeline (ReScript builds)
-├── justfile                 # Build automation (ReScript tasks)
+├── Justfile                 # Build automation (ReScript tasks)
 ├── flake.nix                # Nix reproducible builds
 ├── bsconfig.json            # ReScript configuration
 ├── LICENSE.txt              # Dual MIT + Palimpsest v0.8

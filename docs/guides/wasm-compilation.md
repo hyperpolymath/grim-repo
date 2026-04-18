@@ -168,7 +168,7 @@ grimrepo-scripts/
     └── grimrepo_wasm.js  # WASM loader (future)
 ```
 
-### justfile Updates
+### Justfile Updates
 
 ```justfile
 # Build WASM (future)
