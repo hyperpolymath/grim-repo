@@ -38,7 +38,7 @@ let scripts = [
         "GM.addStyle",
         "GM.xmlHttpRequest"
       ],
-      license: "PMPL-1.0-or-later",
+      license: "MPL-2.0",
       runAt: "document-end"
     }
   },
@@ -59,7 +59,7 @@ let scripts = [
         "GM.setValue",
         "GM.addStyle"
       ],
-      license: "PMPL-1.0-or-later",
+      license: "MPL-2.0",
       runAt: "document-end"
     }
   },
@@ -86,7 +86,7 @@ let scripts = [
         "GM.setValue",
         "GM.addStyle"
       ],
-      license: "PMPL-1.0-or-later",
+      license: "MPL-2.0",
       runAt: "document-end"
     }
   },
@@ -112,7 +112,7 @@ let scripts = [
         "GM.addStyle",
         "GM.xmlHttpRequest"
       ],
-      license: "PMPL-1.0-or-later",
+      license: "MPL-2.0",
       runAt: "document-end"
     }
   },
@@ -133,7 +133,7 @@ let scripts = [
         "GM.setValue",
         "GM.addStyle"
       ],
-      license: "PMPL-1.0-or-later",
+      license: "MPL-2.0",
       runAt: "document-end"
     }
   },
@@ -159,7 +159,7 @@ let scripts = [
         "GM.xmlHttpRequest",
         "GM.registerMenuCommand"
       ],
-      license: "PMPL-1.0-or-later",
+      license: "MPL-2.0",
       runAt: "document-end"
     }
   }

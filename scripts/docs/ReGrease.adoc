@@ -59,7 +59,7 @@ The **Single Source of Truth** for all metadata:
 {
   "name": "my-awesome-script",
   "version": "1.0.0",
-  "license": "PMPL-1.0-or-later",
+  "license": "MPL-2.0",
   "tasks": {
     "build": "rescript build -with-deps && deno run --allow-read --allow-write --allow-env --allow-run src/Build.bs.js"
   },
@@ -159,7 +159,7 @@ ReGrease automatically generates Greasemonkey headers from `deno.json`:
 // @namespace   https://github.com/yourname
 // @version     1.0.0
 // @description Does amazing things
-// @license     PMPL-1.0-or-later
+// @license     MPL-2.0
 // @match       *://example.com/*
 // @grant       GM.setValue
 // @grant       GM.getValue

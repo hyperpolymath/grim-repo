@@ -304,7 +304,7 @@ authors:
   - family-names: "` + info.owner + `"
 repository-code: "` + info.url + `"
 url: "` + info.url + `"
-license: PMPL-1.0-or-later
+license: MPL-2.0
 date-released: ` + (new Date().toISOString().split('T')[0]) + `
 version: "1.0.0"
 `;
@@ -384,7 +384,7 @@ let all = [
     filename: "LICENSE",
     description: "Legal usage rights",
     priority: "Critical",
-    generator: param => "PMPL-1.0-or-later\n\nSee: https://github.com/hyperpolymath/palimpsest-license",
+    generator: param => "MPL-2.0\n\nSee: https://github.com/hyperpolymath/palimpsest-license",
     category: "Legal"
   },
   {

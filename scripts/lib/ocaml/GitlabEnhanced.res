@@ -1,5 +1,5 @@
 // GitlabEnhanced.res - RSR-Focused GitLab Enhancements
-// SPDX-License-Identifier: PMPL-1.0-or-later OR LicenseRef-Palimpsest-0.5
+// SPDX-License-Identifier: MPL-2.0 OR LicenseRef-Palimpsest-0.5
 //
 // Enhances GitLab with RSR awareness:
 // - RSR tier badges

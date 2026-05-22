@@ -1,5 +1,5 @@
 // DarkMode.res - Universal Dark Mode with Sinople Color Schemes
-// SPDX-License-Identifier: PMPL-1.0-or-later OR LicenseRef-Palimpsest-0.5
+// SPDX-License-Identifier: MPL-2.0 OR LicenseRef-Palimpsest-0.5
 //
 // Applies RSR sinople color schemes as dark mode to any website.
 // Supports 10 themes from the RSR ecosystem.

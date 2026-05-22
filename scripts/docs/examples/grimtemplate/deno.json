@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Intelligent Repository Health Agent",
   "author": "Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>",
-  "license": "PMPL-1.0-or-later",
+  "license": "MPL-2.0",
   "tasks": {
     "build": "rescript build -with-deps && deno run --allow-read --allow-write --allow-env --allow-run --allow-net src/Build.bs.js",
     "dev": "rescript build -w"

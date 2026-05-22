@@ -12,7 +12,7 @@
 // @grant        GM.setValue
 // @grant        GM.addStyle
 // @grant        GM.xmlHttpRequest
-// @license      PMPL-1.0-or-later
+// @license      MPL-2.0
 // @run-at       document-end
 // ==/UserScript==
 

@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // GrimTemplateEngine: Intelligent Repository Health Agent
 // License: https://github.com/hyperpolymath/palimpsest-license
 // Version: 1.0.0
@@ -324,7 +324,7 @@ authors:
   - family-names: "${info.owner}"
 repository-code: "${info.url}"
 url: "${info.url}"
-license: PMPL-1.0-or-later
+license: MPL-2.0
 date-released: ${%raw(`new Date().toISOString().split('T')[0]`)}
 version: "1.0.0"
 `
@@ -412,7 +412,7 @@ module Standards = {
       filename: "LICENSE",
       description: "Legal usage rights",
       priority: Critical,
-      generator: _ => "PMPL-1.0-or-later\n\nSee: https://github.com/hyperpolymath/palimpsest-license",
+      generator: _ => "MPL-2.0\n\nSee: https://github.com/hyperpolymath/palimpsest-license",
       category: "Legal",
     },
     {

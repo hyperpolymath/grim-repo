@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // ReGrease: Pure ReScript Build System for UserScripts
 // Meta-circular: ReScript building ReScript
 

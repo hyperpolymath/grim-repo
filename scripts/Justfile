@@ -1,5 +1,5 @@
 # grimrepo-scripts Justfile
-# SPDX-License-Identifier: PMPL-1.0-or-later OR LicenseRef-Palimpsest-0.5
+# SPDX-License-Identifier: MPL-2.0 OR LicenseRef-Palimpsest-0.5
 #
 # ReScript-first userscripts for browser automation
 
@@ -45,7 +45,7 @@ _bundle-script name category:
     // @grant        GM_registerMenuCommand
     // @grant        GM_notification
     // @grant        GM_openInTab
-    // @license      PMPL-1.0-or-later
+    // @license      MPL-2.0
     // ==/UserScript==
     HEADER
     @echo "" >> dist/grim-{{lowercase(name)}}.user.js

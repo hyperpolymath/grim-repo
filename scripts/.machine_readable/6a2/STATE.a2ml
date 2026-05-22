@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# SPDX-License-Identifier: PMPL-1.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
 # STATE.a2ml — Scripts project state
@@ -38,7 +38,7 @@ actions = [
 last-run-utc = "2026-01-03T00:00:00Z"
 last-result = "unknown"  # unknown | pass | warn | fail
 =======
-;; SPDX-License-Identifier: PMPL-1.0-or-later
+;; SPDX-License-Identifier: MPL-2.0
 ;; STATE.scm - Project state for grimrepo-scripts
 ;; Media-Type: application/vnd.state+scm
 

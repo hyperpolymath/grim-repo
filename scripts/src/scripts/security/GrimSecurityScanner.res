@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // GrimSecurityScanner.res - Basic Security Issue Detector
 //
 // Scans repository files for common security vulnerabilities:
@@ -21,7 +21,7 @@
 // @grant GM.addStyle
 // @grant GM.xmlHttpRequest
 // @run-at document-end
-// @license PMPL-1.0-or-later
+// @license MPL-2.0
 
 open GrimCore
 

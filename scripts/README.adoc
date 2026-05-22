@@ -214,7 +214,7 @@ just build-wasm
 
 == License
 
-PMPL-1.0-or-later OR Palimpsest-0.5 (dual licensed)
+MPL-2.0 OR Palimpsest-0.5 (dual licensed)
 
 See link:LICENSE.txt[LICENSE.txt] for details.
 

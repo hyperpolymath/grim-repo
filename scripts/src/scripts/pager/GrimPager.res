@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // GrimPager: Perpetual auto-paging with ReScript optimization
 // License: https://github.com/hyperpolymath/palimpsest-license
 // Version: 1.0.0

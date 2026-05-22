@@ -126,7 +126,7 @@ Score: 40/100
    Compliance Rate: 70%
    ↓
 3. Shows file list with status indicators:
-   ✅ index.res - PMPL-1.0-or-later
+   ✅ index.res - MPL-2.0
    ❌ utils.res - Missing header
    ❌ config.res - Missing header
    ↓
@@ -163,7 +163,7 @@ Score: 40/100
    ❌ [Critical] Missing permissions declaration
        → Fix: Add 'permissions: read-all' at workflow level
    ⚠️  [Warning] Missing SPDX-License-Identifier header
-       → Fix: Add '# SPDX-License-Identifier: PMPL-1.0-or-later' as first line
+       → Fix: Add '# SPDX-License-Identifier: MPL-2.0' as first line
    ↓
 4. Apply fixes to achieve 90+ score
 ----

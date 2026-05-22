@@ -311,7 +311,7 @@ Update `src/scripts/pager/GrimPager.res` → `Module Database.rules`
 
 == License
 
-PMPL-1.0-or-later
+MPL-2.0
 
 See: https://github.com/hyperpolymath/palimpsest-license
 

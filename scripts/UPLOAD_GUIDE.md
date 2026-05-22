@@ -153,7 +153,7 @@ License compliance validator that scans repository files for SPDX headers and de
 Features:
 • Scans source files for SPDX-License-Identifier headers
 • Detects 7+ common licenses:
-  - PMPL-1.0-or-later, MPL-2.0, MIT, Apache-2.0
+  - MPL-2.0, MPL-2.0, MIT, Apache-2.0
   - GPL-3.0, AGPL-3.0, BSD-3-Clause
 • Shows compliance percentage (0-100%)
 • Highlights files missing headers

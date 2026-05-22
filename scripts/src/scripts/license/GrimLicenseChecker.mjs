@@ -63,7 +63,7 @@ function licenseToString(lic) {
   }
   switch (lic) {
     case "PMPL_1_0" :
-      return "PMPL-1.0-or-later";
+      return "MPL-2.0";
     case "MPL_2_0" :
       return "MPL-2.0";
     case "MIT" :

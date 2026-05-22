@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // Build script to generate .user.js files from compiled .mjs files
 
 module Fs = {
@@ -52,7 +52,7 @@ let scripts = [
       supportURL: "https://github.com/hyperpolymath/grimrepo-scripts/issues",
       match: ["*://github.com/*/*", "*://gitlab.com/*/*"],
       grant: ["GM.getValue", "GM.setValue", "GM.addStyle", "GM.xmlHttpRequest"],
-      license: "PMPL-1.0-or-later",
+      license: "MPL-2.0",
       runAt: "document-end",
     },
   },
@@ -69,7 +69,7 @@ let scripts = [
       supportURL: "https://github.com/hyperpolymath/grimrepo-scripts/issues",
       match: ["*://*/*"],
       grant: ["GM.getValue", "GM.setValue", "GM.addStyle"],
-      license: "PMPL-1.0-or-later",
+      license: "MPL-2.0",
       runAt: "document-end",
     },
   },
@@ -92,7 +92,7 @@ let scripts = [
         "*://sr.ht/*/*",
       ],
       grant: ["GM.getValue", "GM.setValue", "GM.addStyle"],
-      license: "PMPL-1.0-or-later",
+      license: "MPL-2.0",
       runAt: "document-end",
     },
   },
@@ -109,7 +109,7 @@ let scripts = [
       supportURL: "https://github.com/hyperpolymath/grimrepo-scripts/issues",
       match: ["*://github.com/*/*", "*://gitlab.com/*/*", "*://bitbucket.org/*/*"],
       grant: ["GM.getValue", "GM.setValue", "GM.addStyle", "GM.xmlHttpRequest"],
-      license: "PMPL-1.0-or-later",
+      license: "MPL-2.0",
       runAt: "document-end",
     },
   },
@@ -126,7 +126,7 @@ let scripts = [
       supportURL: "https://github.com/hyperpolymath/grimrepo-scripts/issues",
       match: ["*://github.com/*/.github/workflows/*"],
       grant: ["GM.getValue", "GM.setValue", "GM.addStyle"],
-      license: "PMPL-1.0-or-later",
+      license: "MPL-2.0",
       runAt: "document-end",
     },
   },
@@ -143,7 +143,7 @@ let scripts = [
       supportURL: "https://github.com/hyperpolymath/grimrepo-scripts/issues",
       match: ["*://github.com/*/*", "*://gitlab.com/*/*"],
       grant: ["GM.getValue", "GM.setValue", "GM.addStyle", "GM.xmlHttpRequest", "GM.registerMenuCommand"],
-      license: "PMPL-1.0-or-later",
+      license: "MPL-2.0",
       runAt: "document-end",
     },
   },

@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# SPDX-License-Identifier: PMPL-1.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
 # NEUROSYM.a2ml — Neurosymbolic integration metadata
@@ -21,7 +21,7 @@ report-format = "logtalk"
 # confidence-threshold = 0.85
 # model = "hypatia-v2"
 =======
-;; SPDX-License-Identifier: PMPL-1.0-or-later
+;; SPDX-License-Identifier: MPL-2.0
 ;; NEUROSYM.scm - Neurosymbolic integration config for grimrepo-scripts
 
 (define neurosym-config

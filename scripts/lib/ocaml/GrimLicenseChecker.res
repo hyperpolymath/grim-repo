@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // GrimLicenseChecker.res - License Compliance Validator
 //
 // Scans repository files for proper SPDX headers and license compliance.
@@ -20,7 +20,7 @@
 // @grant GM.addStyle
 // @grant GM.xmlHttpRequest
 // @run-at document-end
-// @license PMPL-1.0-or-later
+// @license MPL-2.0
 
 open GrimCore
 
@@ -76,12 +76,12 @@ let spdxPatterns = [
 
 let licenseToString = (lic: license): string => {
   switch lic {
-  | PMPL_1_0 => "PMPL-1.0-or-later"
+  | PMPL_1_0 => "MPL-2.0"
   | MPL_2_0 => "MPL-2.0"
   | MIT => "MIT"
   | Apache_2_0 => "Apache-2.0"
   | GPL_3_0 => "GPL-3.0"
-  | AGPL_3_0 => "PMPL-1.0-or-later"
+  | AGPL_3_0 => "MPL-2.0"
   | BSD_3Clause => "BSD-3-Clause"
   | Unknown(s) => `Unknown (${s})`
   }

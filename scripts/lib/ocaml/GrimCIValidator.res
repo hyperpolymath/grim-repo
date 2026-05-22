@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // GrimCIValidator.res - CI/CD Workflow Quality Checker
 //
 // Validates GitHub Actions workflows for security best practices,
@@ -17,7 +17,7 @@
 // @grant GM.addStyle
 // @grant GM.xmlHttpRequest
 // @run-at document-end
-// @license PMPL-1.0-or-later
+// @license MPL-2.0
 
 open GrimCore
 
@@ -90,7 +90,7 @@ let detectIssues = (content: string): array<ciIssue> => {
       level: Warning,
       message: "Missing SPDX-License-Identifier header",
       line: Some(1),
-      suggestion: "Add '# SPDX-License-Identifier: PMPL-1.0-or-later' as first line",
+      suggestion: "Add '# SPDX-License-Identifier: MPL-2.0' as first line",
     }
     %raw(`issues.push(issue)`)
   }

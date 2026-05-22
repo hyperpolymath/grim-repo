@@ -1,5 +1,5 @@
 #!/bin/bash
-# SPDX-License-Identifier: PMPL-1.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 # Opens GreasyFork upload pages for all 6 scripts
 
 echo "Opening GreasyFork upload tabs..."

@@ -11,7 +11,7 @@
 - Enhanced config parser with optional fields
 - Result types for robust error handling
 - Environment variable support for API keys
-- PMPL-1.0-or-later license
+- MPL-2.0 license
 - Links to hyperpolymath/grimrepo-scripts and hyperpolymath/grim-repo
 
 **GrimPager v1.0.0**
@@ -22,7 +22,7 @@
 - Modular architecture (Types, Database, Engine, Entry)
 - Intersection Observer ready
 - WASM-ready architecture
-- PMPL-1.0-or-later license
+- MPL-2.0 license
 - 20+ pre-configured site rules
 
 **Documentation**
@@ -39,7 +39,7 @@
 - Updated all internal references from ReGrease to GrimGreaser
 - Moved build scripts from `src/scripts/build/` to `src/scripts/greaser/`
 - Updated README.adoc with GrimGreaser and GrimPager entries
-- All scripts now use PMPL-1.0-or-later license
+- All scripts now use MPL-2.0 license
 - All scripts link to palimpsest-license repository
 
 === Optimizations Implemented

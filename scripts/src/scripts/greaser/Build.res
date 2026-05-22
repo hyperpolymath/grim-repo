@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // Build.res: Example build script using GrimGreaser
 // This demonstrates the self-hosting pattern
 

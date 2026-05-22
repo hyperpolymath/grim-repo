@@ -13,7 +13,7 @@
 // @grant        GM.setValue
 // @grant        GM.addStyle
 // @grant        GM.xmlHttpRequest
-// @license      PMPL-1.0-or-later
+// @license      MPL-2.0
 // @run-at       document-end
 // ==/UserScript==
 
@@ -82,7 +82,7 @@ function licenseToString(lic) {
   }
   switch (lic) {
     case "PMPL_1_0" :
-      return "PMPL-1.0-or-later";
+      return "MPL-2.0";
     case "MPL_2_0" :
       return "MPL-2.0";
     case "MIT" :

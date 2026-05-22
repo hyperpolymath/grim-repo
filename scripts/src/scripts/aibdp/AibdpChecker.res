@@ -1,5 +1,5 @@
 // AibdpChecker.res - AIBDP Manifest Detection and Display
-// SPDX-License-Identifier: PMPL-1.0-or-later OR LicenseRef-Palimpsest-0.5
+// SPDX-License-Identifier: MPL-2.0 OR LicenseRef-Palimpsest-0.5
 //
 // Detects and displays AIBDP (AI Boundary Declaration Protocol) status
 // for any website. Shows consent status in a non-intrusive badge.
