@@ -163,7 +163,7 @@ Score: 40/100
    ❌ [Critical] Missing permissions declaration
        → Fix: Add 'permissions: read-all' at workflow level
    ⚠️  [Warning] Missing SPDX-License-Identifier header
-       → Fix: Add '# SPDX-License-Identifier: MPL-2.0' as first line
+       → Fix: Add '# SPDX-License-Identifier: CC-BY-SA-4.0' as first line
    ↓
 4. Apply fixes to achieve 90+ score
 ----
