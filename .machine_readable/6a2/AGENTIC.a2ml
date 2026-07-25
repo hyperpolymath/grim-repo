@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SPDX-License-Identifier: MPL-2.0
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
@@ -23,21 +22,3 @@ can-create-files = true
 # - Never use banned languages (TypeScript, Python, Go, etc.)
 # - Never place state files in repository root (must be in .machine_readable/)
 # - Never use AGPL license (use MPL-2.0)
-=======
-;; SPDX-License-Identifier: MPL-2.0
-;; AGENTIC.scm - AI agent interaction patterns for grim-repo
-
-(define agentic-config
-  `((version . "1.0.0")
-    (claude-code
-      ((model . "claude-opus-4-5-20251101")
-       (tools . ("read" "edit" "bash" "grep" "glob"))
-       (permissions . "read-all")))
-    (patterns
-      ((code-review . "thorough")
-       (refactoring . "conservative")
-       (testing . "comprehensive")))
-    (constraints
-      ((languages . ())
-       (banned . ("typescript" "go" "python" "makefile"))))))
->>>>>>> d09ab6f (chore: batch RSR compliance)
