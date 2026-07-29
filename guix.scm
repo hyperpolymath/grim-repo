@@ -14,5 +14,4 @@
   (synopsis "grim-repo")
   (description "grim-repo — part of the hyperpolymath ecosystem.")
   (home-page "https://github.com/hyperpolymath/grim-repo")
-  (license ((@@ (guix licenses) license) "PMPL-1.0-or-later"
-             "https://github.com/hyperpolymath/palimpsest-license")))
+  (license mpl2.0))
