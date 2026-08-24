@@ -1,18 +1,20 @@
-# GreasyFork Webhook Setup Guide
+== GreasyFork Webhook Setup Guide
 
-Your GreasyFork webhook is configured! Here's how to complete the setup:
+Your GreasyFork webhook is configured! Here’s how to complete the setup:
 
-## Webhook Details
+=== Webhook Details
 
-- **Payload URL**: `https://greasyfork.org/en/users/118672-jonathan-jewell/webhook`
-- **Secret**: `f2ff1c08a7eac48e39c00d074422c30a64e9814fc88bb34c036e06f5e32b5b5a13f45eb13b5cd76f15b436ad8676952fb81ce8186c2ee264b5733e1931fa0237`
-- **Event**: Push (already configured in your GitHub settings)
+* *Payload URL*:
+`+https://greasyfork.org/en/users/118672-jonathan-jewell/webhook+`
+* *Secret*:
+`+f2ff1c08a7eac48e39c00d074422c30a64e9814fc88bb34c036e06f5e32b5b5a13f45eb13b5cd76f15b436ad8676952fb81ce8186c2ee264b5733e1931fa0237+`
+* *Event*: Push (already configured in your GitHub settings)
 
-## Repository Structure
+=== Repository Structure
 
 Your userscripts are now organized for webhook sync:
 
-```
+....
 grimrepo-scripts/
 ├── userscripts/
 │   ├── GrimGreaser.user.js
@@ -22,42 +24,46 @@ grimrepo-scripts/
 │   ├── GrimCIValidator.user.js
 │   └── GrimSecurityScanner.user.js
 └── dist/ (same files, for local testing)
-```
+....
 
-## Initial Setup (One-Time)
+=== Initial Setup (One-Time)
 
-Since the webhook only works for **updates**, you need to manually create each script on GreasyFork first:
+Since the webhook only works for *updates*, you need to manually create
+each script on GreasyFork first:
 
-### Step 1: Upload Scripts to GreasyFork
+==== Step 1: Upload Scripts to GreasyFork
 
-For each script in `userscripts/`:
+For each script in `+userscripts/+`:
 
-1. Go to https://greasyfork.org/en/scripts/new
-2. Click **"Choose File"** and select the `.user.js` file
-3. Set **Language** to "English"
-4. Add **Description** (see descriptions below)
-5. Add **Tags** (see tags below)
-6. Click **"Post script"**
+[arabic]
+. Go to https://greasyfork.org/en/scripts/new
+. Click *"`Choose File`"* and select the `+.user.js+` file
+. Set *Language* to "`English`"
+. Add *Description* (see descriptions below)
+. Add *Tags* (see tags below)
+. Click *"`Post script`"*
 
-### Step 2: Configure Webhook Sync
+==== Step 2: Configure Webhook Sync
 
 After creating each script on GreasyFork:
 
-1. Go to the script's edit page
-2. Scroll to **"Sync"** section
-3. Select **"Sync type"**: GitHub
-4. Enter **"Repository"**: `hyperpolymath/grimrepo-scripts`
-5. Enter **"Branch"**: `main`
-6. Enter **"Path"**: `userscripts/[ScriptName].user.js`
-   - Example: `userscripts/GrimGreaser.user.js`
-7. Click **"Update script"**
+[arabic]
+. Go to the script’s edit page
+. Scroll to *"`Sync`"* section
+. Select *"`Sync type`"*: GitHub
+. Enter *"`Repository`"*: `+hyperpolymath/grimrepo-scripts+`
+. Enter *"`Branch`"*: `+main+`
+. Enter *"`Path`"*: `+userscripts/[ScriptName].user.js+`
+* Example: `+userscripts/GrimGreaser.user.js+`
+. Click *"`Update script`"*
 
-## Recommended Descriptions & Tags
+=== Recommended Descriptions & Tags
 
-### GrimGreaser
+==== GrimGreaser
 
-**Description:**
-```
+*Description:*
+
+....
 Pure ReScript build system with GreasyFork auto-publish capability. Meta-circular architecture allows ReScript to build itself into userscripts with automatic dependency bundling and minification.
 
 Features:
@@ -67,16 +73,18 @@ Features:
 - Single Source of Truth from deno.json
 
 Part of the GrimRepo ecosystem for repository management.
-```
+....
 
-**Tags:** `build-tool`, `automation`, `developer-tools`, `rescript`
+*Tags:* `+build-tool+`, `+automation+`, `+developer-tools+`,
+`+rescript+`
 
----
+'''''
 
-### GrimPager
+==== GrimPager
 
-**Description:**
-```
+*Description:*
+
+....
 Perpetual auto-paging engine that never stops scrolling. Uses homoiconic rule database with smart pagination detection fallback.
 
 Features:
@@ -86,16 +94,18 @@ Features:
 - Works on Google, GitHub, GitLab, Reddit, HN, and more
 
 Enables infinite browsing without clicking "Next Page" buttons.
-```
+....
 
-**Tags:** `pagination`, `auto-paging`, `infinite-scroll`, `browsing`
+*Tags:* `+pagination+`, `+auto-paging+`, `+infinite-scroll+`,
+`+browsing+`
 
----
+'''''
 
-### GrimTemplateEngine
+==== GrimTemplateEngine
 
-**Description:**
-```
+*Description:*
+
+....
 Intelligent repository health agent that detects missing community health files and generates customized templates with one click.
 
 Features:
@@ -107,16 +117,18 @@ Features:
 - One-click GitHub/GitLab editor pre-fill
 
 Helps maintain 100+ repositories at scale.
-```
+....
 
-**Tags:** `github`, `gitlab`, `repository-management`, `templates`, `health-check`
+*Tags:* `+github+`, `+gitlab+`, `+repository-management+`,
+`+templates+`, `+health-check+`
 
----
+'''''
 
-### GrimLicenseChecker
+==== GrimLicenseChecker
 
-**Description:**
-```
+*Description:*
+
+....
 License compliance validator that scans repository files for SPDX headers and detects license inconsistencies.
 
 Features:
@@ -127,16 +139,18 @@ Features:
 - Supports 10+ file extensions
 
 Essential for maintaining license compliance across multiple repositories.
-```
+....
 
-**Tags:** `license`, `compliance`, `spdx`, `repository-management`, `legal`
+*Tags:* `+license+`, `+compliance+`, `+spdx+`,
+`+repository-management+`, `+legal+`
 
----
+'''''
 
-### GrimCIValidator
+==== GrimCIValidator
 
-**Description:**
-```
+*Description:*
+
+....
 GitHub Actions workflow quality checker that validates CI/CD configurations for security best practices.
 
 Features:
@@ -148,16 +162,18 @@ Features:
 - Categorizes issues by severity (Critical/Warning/Info)
 
 Ensures your CI/CD pipelines follow security best practices.
-```
+....
 
-**Tags:** `github-actions`, `ci-cd`, `security`, `validation`, `devops`
+*Tags:* `+github-actions+`, `+ci-cd+`, `+security+`, `+validation+`,
+`+devops+`
 
----
+'''''
 
-### GrimSecurityScanner
+==== GrimSecurityScanner
 
-**Description:**
-```
+*Description:*
+
+....
 Security vulnerability detector that scans repositories for common security issues and missing security files.
 
 Features:
@@ -169,17 +185,20 @@ Features:
 - Manual trigger via userscript menu
 
 Basic security scanning for repository health checks.
-```
+....
 
-**Tags:** `security`, `vulnerability-scanner`, `repository-management`, `code-quality`
+*Tags:* `+security+`, `+vulnerability-scanner+`,
+`+repository-management+`, `+code-quality+`
 
----
+'''''
 
-## After Setup: Automatic Sync
+=== After Setup: Automatic Sync
 
-Once configured, any push to GitHub will automatically update all scripts on GreasyFork:
+Once configured, any push to GitHub will automatically update all
+scripts on GreasyFork:
 
-```bash
+[source,bash]
+----
 # Make changes to userscripts
 vim userscripts/GrimPager.user.js
 
@@ -189,36 +208,42 @@ git commit -m "Update GrimPager: add new site rule"
 git push origin main
 
 # GreasyFork automatically updates within seconds! ✨
-```
+----
 
-## Workflow Integration
+=== Workflow Integration
 
 Add this to your build pipeline:
 
-```bash
+[source,bash]
+----
 # In deno.json tasks:
 "build-all": "deno task build && deno run --allow-read --allow-write --allow-env build-userscripts.ts && cp dist/*.user.js userscripts/"
-```
+----
 
 Then:
-```bash
+
+[source,bash]
+----
 deno task build-all
 git add userscripts/
 git commit -m "Release v1.0.1"
 git push
-```
+----
 
-## Troubleshooting
+=== Troubleshooting
 
-If webhook sync isn't working:
+If webhook sync isn’t working:
 
-1. Check webhook delivery at: https://github.com/hyperpolymath/grimrepo-scripts/settings/hooks
-2. Verify the script path on GreasyFork matches exactly
-3. Ensure the file has proper userscript metadata headers
-4. Check that the branch is `main` (not `master`)
+[arabic]
+. Check webhook delivery at:
+https://github.com/hyperpolymath/grimrepo-scripts/settings/hooks
+. Verify the script path on GreasyFork matches exactly
+. Ensure the file has proper userscript metadata headers
+. Check that the branch is `+main+` (not `+master+`)
 
-## Additional Resources
+=== Additional Resources
 
-- [GreasyFork Webhook Docs](https://greasyfork.org/en/help/external-scripts)
-- [GitHub Webhook Guide](https://docs.github.com/en/webhooks)
-- [Userscript Metadata](https://wiki.greasespot.net/Metadata_Block)
+* https://greasyfork.org/en/help/external-scripts[GreasyFork Webhook
+Docs]
+* https://docs.github.com/en/webhooks[GitHub Webhook Guide]
+* https://wiki.greasespot.net/Metadata_Block[Userscript Metadata]

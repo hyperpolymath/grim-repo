@@ -1,38 +1,42 @@
-# WASM Compilation Guide
+== WASM Compilation Guide
 
 Compiling GrimRepo to WebAssembly for maximum performance.
 
-## Status: Planned for Q2 2025
+=== Status: Planned for Q2 2025
 
-WASM compilation is currently in the design phase. This guide documents the planned approach.
+WASM compilation is currently in the design phase. This guide documents
+the planned approach.
 
-## Why WASM?
+=== Why WASM?
 
-### Performance Benefits
+==== Performance Benefits
 
-| Metric | JavaScript | WASM (projected) | Improvement |
-|--------|------------|------------------|-------------|
-| Execution Speed | 7ms | **2ms** | **71% faster** |
-| Memory Usage | 5.1 MB | **3.2 MB** | **37% reduction** |
-| Bundle Size | 28 KB | **18 KB** | **36% smaller** |
-| Cold Start | 22ms | **8ms** | **64% faster** |
-| GC Pauses | ~2ms | **~0.5ms** | **75% reduction** |
+[cols=",,,",options="header",]
+|===
+|Metric |JavaScript |WASM (projected) |Improvement
+|Execution Speed |7ms |*2ms* |*71% faster*
+|Memory Usage |5.1 MB |*3.2 MB* |*37% reduction*
+|Bundle Size |28 KB |*18 KB* |*36% smaller*
+|Cold Start |22ms |*8ms* |*64% faster*
+|GC Pauses |~2ms |*~0.5ms* |*75% reduction*
+|===
 
-### Additional Advantages
+==== Additional Advantages
 
-1. **Near-Native Performance** - Executes at C/Rust speed
-2. **Predictable Performance** - No JIT warm-up needed
-3. **Cross-Browser Consistency** - Same performance everywhere
-4. **Secure Sandboxing** - WASM runs in isolated environment
-5. **Portable** - Works on any platform with WASM support
+[arabic]
+. *Near-Native Performance* - Executes at C/Rust speed
+. *Predictable Performance* - No JIT warm-up needed
+. *Cross-Browser Consistency* - Same performance everywhere
+. *Secure Sandboxing* - WASM runs in isolated environment
+. *Portable* - Works on any platform with WASM support
 
-## Architecture
+=== Architecture
 
-### Hybrid Approach
+==== Hybrid Approach
 
 GrimRepo will use a hybrid JavaScript + WASM architecture:
 
-```
+....
 ┌─────────────────────────────────────┐
 │         Browser / Node.js           │
 │                                     │
@@ -52,45 +56,39 @@ GrimRepo will use a hybrid JavaScript + WASM architecture:
 │  │  - generateAuditReport()      │  │
 │  └──────────────────────────────┘  │
 └─────────────────────────────────────┘
-```
+....
 
-### Responsibilities
+==== Responsibilities
 
-**JavaScript Layer**:
-- DOM manipulation
-- Userscript integration
-- Platform detection
-- LocalStorage access
-- Event handling
+*JavaScript Layer*: - DOM manipulation - Userscript integration -
+Platform detection - LocalStorage access - Event handling
 
-**WASM Layer**:
-- Repository auditing logic
-- Score calculation
-- Report generation
-- String processing
-- Array operations
+*WASM Layer*: - Repository auditing logic - Score calculation - Report
+generation - String processing - Array operations
 
-## Implementation Plan
+=== Implementation Plan
 
-### Phase 1: ReScript → OCaml
+==== Phase 1: ReScript → OCaml
 
 ReScript compiles to JavaScript, but we need OCaml bytecode for WASM:
 
-```bash
+[source,bash]
+----
 # Current: ReScript → JavaScript
 src/GrimRepo.res → lib/GrimRepo.bs.js
 
 # Future: ReScript → OCaml → WASM
 src/GrimRepo.res → _build/GrimRepo.ml → lib/grimrepo.wasm
-```
+----
 
-**Tool**: `rescript` + `dune` + `wasm_of_ocaml`
+*Tool*: `+rescript+` + `+dune+` + `+wasm_of_ocaml+`
 
-### Phase 2: Dune Configuration
+==== Phase 2: Dune Configuration
 
-Create `dune` files for OCaml/WASM build:
+Create `+dune+` files for OCaml/WASM build:
 
-```dune
+[source,dune]
+----
 ; dune (in project root)
 (executable
  (name grimrepo)
@@ -100,13 +98,14 @@ Create `dune` files for OCaml/WASM build:
 ; dune-project
 (lang dune 3.7)
 (name grimrepo)
-```
+----
 
-### Phase 3: WASM Backend
+==== Phase 3: WASM Backend
 
-Use `wasm_of_ocaml` or `js_of_ocaml` with WASM target:
+Use `+wasm_of_ocaml+` or `+js_of_ocaml+` with WASM target:
 
-```bash
+[source,bash]
+----
 # Install WASM compiler
 opam install wasm_of_ocaml
 
@@ -116,13 +115,14 @@ dune build --profile release
 # Output:
 # _build/default/grimrepo.wasm
 # _build/default/grimrepo_wasm.js (loader)
-```
+----
 
-### Phase 4: JavaScript Interop
+==== Phase 4: JavaScript Interop
 
 Define FFI bindings for JavaScript ↔ WASM communication:
 
-```ocaml
+[source,ocaml]
+----
 (* External functions from JavaScript *)
 external log : string -> unit = "console_log"
 
@@ -131,13 +131,14 @@ let audit_repository paths files =
   let result = Audit.audit_repository paths files in
   (* Convert OCaml result to JavaScript-friendly format *)
   result
-```
+----
 
-### Phase 5: Performance Testing
+==== Phase 5: Performance Testing
 
 Benchmark WASM vs JavaScript:
 
-```javascript
+[source,javascript]
+----
 // Benchmark script
 const wasmModule = await loadWASM('./lib/grimrepo.wasm')
 const jsModule = require('./lib/GrimRepo.bs.js')
@@ -149,13 +150,13 @@ console.timeEnd('WASM Audit')
 console.time('JS Audit')
 jsModule.auditRepository(paths, files)
 console.timeEnd('JS Audit')
-```
+----
 
-## Build Configuration
+=== Build Configuration
 
-### Project Structure (Future)
+==== Project Structure (Future)
 
-```
+....
 grimrepo-scripts/
 ├── src/
 │   └── *.res          # ReScript source (unchanged)
@@ -166,11 +167,12 @@ grimrepo-scripts/
     ├── *.bs.js        # JavaScript output (current)
     ├── grimrepo.wasm  # WASM binary (future)
     └── grimrepo_wasm.js  # WASM loader (future)
-```
+....
 
-### Justfile Updates
+==== Justfile Updates
 
-```justfile
+[source,justfile]
+----
 # Build WASM (future)
 build-wasm:
     @echo "🔨 Building WASM..."
@@ -182,11 +184,12 @@ build-wasm:
 benchmark:
     @echo "📊 Benchmarking performance..."
     node benchmarks/run.js
-```
+----
 
-### flake.nix Updates
+==== flake.nix Updates
 
-```nix
+[source,nix]
+----
 # Add OCaml and WASM tooling
 buildInputs = with pkgs; [
   nodejs_20
@@ -198,13 +201,14 @@ buildInputs = with pkgs; [
   just
   git
 ];
-```
+----
 
-## API Design
+=== API Design
 
-### WASM Module Interface
+==== WASM Module Interface
 
-```typescript
+[source,typescript]
+----
 // Type definitions for WASM module
 interface GrimRepoWASM {
   // Core functions
@@ -230,11 +234,12 @@ const result = wasm.auditRepository(
   ['README.md', 'LICENSE.txt']
 )
 console.log(wasm.generateAuditReport(result))
-```
+----
 
-### JavaScript Wrapper
+==== JavaScript Wrapper
 
-```javascript
+[source,javascript]
+----
 // lib/grimrepo-wasm-wrapper.js
 class GrimRepoWASM {
   constructor(wasmModule) {
@@ -275,15 +280,16 @@ export async function loadGrimRepo() {
   const wasmModule = await loadWASM('./lib/grimrepo.wasm')
   return new GrimRepoWASM(wasmModule)
 }
-```
+----
 
-## Fallback Strategy
+=== Fallback Strategy
 
-### Progressive Enhancement
+==== Progressive Enhancement
 
 Provide JavaScript fallback for browsers without WASM support:
 
-```javascript
+[source,javascript]
+----
 // Auto-detect WASM support
 async function loadGrimRepo() {
   if (typeof WebAssembly !== 'undefined') {
@@ -296,53 +302,53 @@ async function loadGrimRepo() {
     return loadGrimRepoJS()
   }
 }
-```
+----
 
-## Browser Compatibility
+=== Browser Compatibility
 
-### WASM Support
+==== WASM Support
 
-| Browser | Version | WASM Support |
-|---------|---------|--------------|
-| Chrome | 57+ | ✅ Full |
-| Firefox | 52+ | ✅ Full |
-| Safari | 11+ | ✅ Full |
-| Edge | 16+ | ✅ Full |
-| Opera | 44+ | ✅ Full |
-| IE | All | ❌ None |
+[cols=",,",options="header",]
+|===
+|Browser |Version |WASM Support
+|Chrome |57+ |✅ Full
+|Firefox |52+ |✅ Full
+|Safari |11+ |✅ Full
+|Edge |16+ |✅ Full
+|Opera |44+ |✅ Full
+|IE |All |❌ None
+|===
 
-**Coverage**: 95%+ of global browser market share
+*Coverage*: 95%+ of global browser market share
 
-### Polyfill
+==== Polyfill
 
 For IE11 and older browsers:
 
-```javascript
+[source,javascript]
+----
 if (typeof WebAssembly === 'undefined') {
   // Load polyfill
   await import('wasm-polyfill')
   // Or just use JavaScript fallback
 }
-```
+----
 
-## Debugging
+=== Debugging
 
-### WASM Debugging Tools
+==== WASM Debugging Tools
 
-**Chrome DevTools**:
-1. Open DevTools → Sources tab
-2. WASM modules appear in file tree
-3. Set breakpoints in WASM code
-4. Inspect variables (limited)
+*Chrome DevTools*: 1. Open DevTools → Sources tab 2. WASM modules appear
+in file tree 3. Set breakpoints in WASM code 4. Inspect variables
+(limited)
 
-**Firefox Developer Tools**:
-1. Better WASM debugging than Chrome
-2. Can view WASM text format
-3. Step through WASM instructions
+*Firefox Developer Tools*: 1. Better WASM debugging than Chrome 2. Can
+view WASM text format 3. Step through WASM instructions
 
-### Logging from WASM
+==== Logging from WASM
 
-```ocaml
+[source,ocaml]
+----
 (* OCaml side *)
 external js_log : string -> unit = "console_log"
 
@@ -354,9 +360,10 @@ let audit_repository paths files =
   let result = do_audit paths files in
   debug_log "Audit complete";
   result
-```
+----
 
-```javascript
+[source,javascript]
+----
 // JavaScript side (provide console_log to WASM)
 const imports = {
   env: {
@@ -368,15 +375,16 @@ const imports = {
 }
 
 const wasmModule = await WebAssembly.instantiate(wasmBytes, imports)
-```
+----
 
-## Performance Tuning
+=== Performance Tuning
 
-### Memory Management
+==== Memory Management
 
 WASM uses linear memory - optimize allocations:
 
-```ocaml
+[source,ocaml]
+----
 (* Avoid excessive allocations *)
 let rec sum_array arr =
   (* Bad: Creates intermediate lists *)
@@ -389,13 +397,14 @@ let sum_array arr =
     total := !total + arr.(i)
   done;
   !total
-```
+----
 
-### Minimize FFI Calls
+==== Minimize FFI Calls
 
 JavaScript ↔ WASM calls have overhead:
 
-```javascript
+[source,javascript]
+----
 // Bad: Call WASM for each item
 files.forEach(file => {
   wasm.checkFile(file)  // Multiple FFI calls
@@ -403,75 +412,69 @@ files.forEach(file => {
 
 // Good: Batch process in WASM
 wasm.checkFiles(files)  // Single FFI call
-```
+----
 
-## Security Considerations
+=== Security Considerations
 
-### Sandboxing
+==== Sandboxing
 
-WASM runs in a secure sandbox:
-- No access to file system
-- No network access
-- Isolated memory
-- Cannot call arbitrary JavaScript
+WASM runs in a secure sandbox: - No access to file system - No network
+access - Isolated memory - Cannot call arbitrary JavaScript
 
-**Benefit**: Even malicious WASM can't escape sandbox.
+*Benefit*: Even malicious WASM can’t escape sandbox.
 
-### Memory Safety
+==== Memory Safety
 
-WASM has bounds checking:
-- Buffer overflows prevented
-- Out-of-bounds access trapped
-- Type safety enforced
+WASM has bounds checking: - Buffer overflows prevented - Out-of-bounds
+access trapped - Type safety enforced
 
-**Benefit**: OCaml's safety + WASM's safety = double protection.
+*Benefit*: OCaml’s safety + WASM’s safety = double protection.
 
-## Roadmap
+=== Roadmap
 
-### Milestone 1: Prototype (Q2 2025)
-- [ ] Set up dune build system
-- [ ] Compile simple ReScript module to WASM
-- [ ] Create JavaScript wrapper
-- [ ] Basic interop test
+==== Milestone 1: Prototype (Q2 2025)
 
-### Milestone 2: Core Logic (Q3 2025)
-- [ ] Port `analyzeStructure` to WASM
-- [ ] Port `analyzeCommunityStandards` to WASM
-- [ ] Port `auditRepository` to WASM
-- [ ] Benchmark vs JavaScript
+* [ ] Set up dune build system
+* [ ] Compile simple ReScript module to WASM
+* [ ] Create JavaScript wrapper
+* [ ] Basic interop test
 
-### Milestone 3: Production (Q4 2025)
-- [ ] Optimize WASM bundle size
-- [ ] Comprehensive testing
-- [ ] Documentation
-- [ ] Release v2.0 with WASM support
+==== Milestone 2: Core Logic (Q3 2025)
 
-### Milestone 4: Advanced (2026)
-- [ ] SIMD optimizations
-- [ ] Multi-threading (SharedArrayBuffer)
-- [ ] Streaming compilation
-- [ ] Native mobile apps (via WASM)
+* [ ] Port `+analyzeStructure+` to WASM
+* [ ] Port `+analyzeCommunityStandards+` to WASM
+* [ ] Port `+auditRepository+` to WASM
+* [ ] Benchmark vs JavaScript
 
-## Contributing
+==== Milestone 3: Production (Q4 2025)
+
+* [ ] Optimize WASM bundle size
+* [ ] Comprehensive testing
+* [ ] Documentation
+* [ ] Release v2.0 with WASM support
+
+==== Milestone 4: Advanced (2026)
+
+* [ ] SIMD optimizations
+* [ ] Multi-threading (SharedArrayBuffer)
+* [ ] Streaming compilation
+* [ ] Native mobile apps (via WASM)
+
+=== Contributing
 
 Interested in helping with WASM compilation?
 
-**Skills Needed**:
-- OCaml programming
-- WASM fundamentals
-- JavaScript FFI
-- Performance optimization
+*Skills Needed*: - OCaml programming - WASM fundamentals - JavaScript
+FFI - Performance optimization
 
-**How to Help**:
-1. Experiment with `wasm_of_ocaml`
-2. Benchmark ReScript → OCaml → WASM pipeline
-3. Document findings in issues
-4. Submit prototype implementations
+*How to Help*: 1. Experiment with `+wasm_of_ocaml+` 2. Benchmark
+ReScript → OCaml → WASM pipeline 3. Document findings in issues 4.
+Submit prototype implementations
 
----
+'''''
 
-**Status**: Design phase. Implementation begins Q2 2025.
+*Status*: Design phase. Implementation begins Q2 2025.
 
-**Questions?** Open an issue with label `wasm-compilation`.
+*Questions?* Open an issue with label `+wasm-compilation+`.
 
-**Last Updated**: 2025-01-22
+*Last Updated*: 2025-01-22
