@@ -1,0 +1,186 @@
+== Security Policy
+
+=== Supported Versions
+
+We actively support the following versions with security updates:
+
+[cols=",",options="header",]
+|===
+|Version |Supported
+|1.x.x |:white_check_mark:
+|< 1.0 |:x:
+|===
+
+=== Reporting a Vulnerability
+
+*Please do not report security vulnerabilities through public
+GitHub/GitLab issues.*
+
+Instead, please report security vulnerabilities to us privately using
+one of these methods:
+
+==== Primary Contact
+
+*Email*: security@grimrepo.dev (coming soon) *PGP Key*: Available at
+`+.well-known/security.txt+`
+
+*Response Time*: We aim to acknowledge reports within 48 hours and
+provide an initial assessment within 7 days.
+
+==== Alternative Contacts
+
+For immediate security concerns, you can also reach maintainers via: -
+GitLab Security Issue (private):
+https://gitlab.com/extensions-library/monkey-scripts/grimrepo-scripts/-/issues/new?issuable_template=security
+- See `+.well-known/security.txt+` for additional contact methods
+
+=== What to Include in Your Report
+
+Please include as much of the following information as possible:
+
+[arabic]
+. *Type of vulnerability* (e.g., XSS, injection, authentication bypass)
+. *Affected component(s)* (e.g., specific module, function, or endpoint)
+. *Step-by-step reproduction* instructions
+. *Proof-of-concept* or exploit code (if available)
+. *Impact assessment* (what an attacker could achieve)
+. *Suggested remediation* (if you have ideas)
+. *Your contact information* for follow-up questions
+
+=== Our Commitment
+
+When you report a vulnerability, you can expect:
+
+[arabic]
+. *Acknowledgment* within 48 hours
+. *Regular updates* on our investigation and remediation progress
+. *Credit* in our security advisories (if you wish to be named)
+. *Coordinated disclosure* - we will work with you on timing of public
+disclosure
+. *No legal action* against good-faith security researchers
+
+=== Security Update Process
+
+[arabic]
+. *Triage* (1-2 days): Validate and assess severity
+. *Fix Development* (variable): Develop and test patch
+. *Advisory Draft* (1 day): Prepare security advisory
+. *Coordinated Disclosure* (negotiated): Work with reporter on timing
+. *Public Release*: Patch release + public advisory
+. *Post-Mortem* (optional): Analyze root cause and prevention
+
+=== Severity Classification
+
+We use the following severity levels:
+
+==== Critical
+
+* Remote code execution
+* Authentication bypass
+* Data breach potential
+* *Response*: Emergency patch within 24-48 hours
+
+==== High
+
+* Privilege escalation
+* Cross-site scripting (stored)
+* SQL injection
+* *Response*: Patch within 7 days
+
+==== Medium
+
+* Cross-site scripting (reflected)
+* Information disclosure
+* Denial of service (authenticated)
+* *Response*: Patch within 30 days
+
+==== Low
+
+* Minor information leaks
+* Denial of service (unauthenticated, limited impact)
+* *Response*: Patch in next scheduled release
+
+=== Security Best Practices
+
+==== For Users
+
+[arabic]
+. *Keep Updated*: Always use the latest version
+. *Review Permissions*: Understand what access the userscript requires
+. *Audit Sources*: Only install from official sources (GitLab,
+GreasyFork)
+. *Report Issues*: If something seems suspicious, report it
+
+==== For Contributors
+
+[arabic]
+. *Input Validation*: Validate all external inputs
+. *Output Encoding*: Properly encode outputs to prevent XSS
+. *No Secrets*: Never commit API keys, tokens, or credentials
+. *Dependency Audits*: Run `+npm audit+` before submitting PRs
+. *SAST Tools*: Use static analysis tools during development
+
+=== Known Security Considerations
+
+==== Userscript Environment
+
+As a userscript, GrimRepo runs in users’ browsers with elevated
+privileges. We take special precautions:
+
+[arabic]
+. *Content Security Policy*: We restrict inline scripts and external
+resources
+. *DOM Isolation*: We use shadow DOM to prevent interference
+. *No External Calls*: Offline-first architecture minimizes attack
+surface
+. *Minimal Permissions*: We request only necessary browser permissions
+
+==== Sandboxing
+
+* User-provided configurations are validated and sanitized
+* No `+eval()+` or `+Function()+` constructors on user input
+* Strict TypeScript types prevent injection vulnerabilities
+
+=== Security Audit History
+
+[width="100%",cols="18%,32%,22%,14%,14%",options="header",]
+|===
+|Date |Auditor |Scope |Findings |Status
+|2025-01-15 |Internal Review |Full codebase |0 |Complete
+|===
+
+=== Vulnerability Disclosure Policy
+
+We follow *Coordinated Vulnerability Disclosure*:
+
+[arabic]
+. *Private Reporting*: Vulnerabilities reported privately
+. *Investigation Period*: 90-day maximum before public disclosure
+. *Patch Development*: We develop and test fixes
+. *Coordinated Release*: Public disclosure after patch is available
+. *Credit*: Security researchers credited in advisories (opt-in)
+
+=== Security Hall of Fame
+
+We recognize security researchers who help improve GrimRepo:
+
+* _No vulnerabilities reported yet_
+
+Thank you to all researchers who help keep GrimRepo secure!
+
+=== Additional Resources
+
+* *Security.txt*: See `+.well-known/security.txt+` (RFC 9116 compliant)
+* *CVE Database*: We register CVEs for qualifying vulnerabilities
+* *Security Advisories*:
+https://gitlab.com/extensions-library/monkey-scripts/grimrepo-scripts/-/security/advisories
+
+=== Questions?
+
+For security-related questions (non-vulnerabilities), contact: -
+*Email*: security@grimrepo.dev (coming soon) - *GitLab Issues*:
+https://gitlab.com/extensions-library/monkey-scripts/grimrepo-scripts/-/issues
+
+'''''
+
+*Last Updated*: 2025-01-22 *Version*: 1.0
