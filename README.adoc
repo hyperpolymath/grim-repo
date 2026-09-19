@@ -7,7 +7,7 @@ repositories*
 
 [!https://rhodium-standard.org[RSR
 Compliant]([https://img.shields.io/badge/RSR-Bronze-cd7f32)](https://rhodium-standard.org](https://img.shields.io/badge/RSR-Bronze-cd7f32)])
-[!link:CONTRIBUTING.md[TPCF]([https://img.shields.io/badge/TPCF-Perimeter%203-green)](CONTRIBUTING.md](https://img.shields.io/badge/TPCF-Perimeter%203-green)])
+[!link:.github/CONTRIBUTING.md[TPCF]([https://img.shields.io/badge/TPCF-Perimeter%203-green)](CONTRIBUTING.md](https://img.shields.io/badge/TPCF-Perimeter%203-green)])
 
 == Overview
 
@@ -228,7 +228,7 @@ We welcome contributions! This project follows the *Tri-Perimeter
 Contribution Framework (TPCF)*:
 
 * *Perimeter 3 (Community Sandbox)*: Open to all contributors
-* See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines
+* See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for detailed guidelines
 * Review [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before participating
 
 == Security

@@ -270,7 +270,7 @@ Thanks to all who have contributed to this project!
 
 ---
 
-*Want to be listed here? See [CONTRIBUTING.md](CONTRIBUTING.md)*
+*Want to be listed here? See [CONTRIBUTING.md](../../.github/CONTRIBUTING.md)*
 `;
 }
 

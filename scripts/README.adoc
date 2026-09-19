@@ -220,7 +220,7 @@ See link:LICENSE.txt[LICENSE.txt] for details.
 
 == Contributing
 
-Contributions welcome! Please read link:CONTRIBUTING.md[CONTRIBUTING.md] first.
+Contributions welcome! Please read link:../.github/CONTRIBUTING.md[CONTRIBUTING.md] first.
 
 == Related Projects
 
